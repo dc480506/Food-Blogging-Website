@@ -23,7 +23,19 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
+      /* #map {
 
+      width: 49%;
+      margin-top: 100px;
+      margin-left: 50%;
+      margin-bottom: 10px;
+      max-height: 60%;
+      } */
+      .mapboxgl-canvas-container {
+
+      height: 80vh;
+
+      }
     .marker {
         background-image: url('img/restaurant_icon.png');
         background-size: cover;
@@ -32,6 +44,9 @@
         border-radius: 50%;
         cursor: pointer;
       }
+      /* .story-map {
+       overflow: hidden;
+} */
       .mapboxgl-popup {
         max-width: 200px;
       }
@@ -40,60 +55,59 @@
         text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
+      /* .bg-warning{
+        background-color:#d35400;
+      } */
     </style>
-    <!-- <link rel="stylesheet" href="css/styles.css"> -->
-    <script src="js/script.js"></script>
-    
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->    
   </head>
   <body ng-app="Mashup" ng-controller="Controller">
-    <!-- <div class="jumbotron bg-danger text-center">
-        <h3 class="">{{title}}</h1>
-        <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p> -->
-    </div> -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3" ng-repeat="restaurant in top_restaurants">
-          <div class="card">
-            <img class="card-img-top" src={{restaurant.restaurant.featured_image}} alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{restaurant.restaurant.name}}</h5>
-              <p class="card-text">Cuisines: {{restaurant.restaurant.cuisines}}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="container mt-2">
+      <div class="jumbotron py-3" style="background-color:#ff4757">
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="query" ng-model-options="{ debounce: 800 }" ng-change="fetchRestaurants()" aria-label="Text input with dropdown button">
+          <div class="input-group-append">
+            <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card Mode</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" ng-click="showCard= !showCard" href="#">Card Mode</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item" ng-click="showCard= !showCard" href="#">Map Mode</a>
             </div>
           </div>
-        </div>
-        <!-- <div class="col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="https://b.zmtcdn.com/data/pictures/3/40853/6575f9f7e5b67f8b43364fff733b898c.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div> -->
-        <div id="map" class="col-md-3">
         </div>
       </div>
+    </div>
+    <div class="container">
+      <p class="mt-4 mx-4"><b>{{info}} :</b></p>
+      <div class="row">
+        <div ng-show="showCard" id="map" class="ml-3 col-md-9">
+        </div>
+      </div>
+        <div ng-show="!showCard">
+          <div class="row">
+            <div class="col-md-3 d-flex align-items-stretch" ng-repeat="restaurant in top_restaurants">
+            <!-- <div class="col-md-3"> -->
+              <div class="card mb-3">
+                <img class="card-img-top" src={{restaurant.restaurant.featured_image}} alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{restaurant.restaurant.name}}</h5>
+                  <p class="card-text"><small><strong>Cuisines:</strong> {{restaurant.restaurant.cuisines}}</small></p>
+                  <p class="card-text"><small><strong>Address: </strong> {{restaurant.restaurant.location.address}}</small></p>
+                  <p class="card-text"><small><strong>Rating: </strong> {{restaurant.restaurant.user_rating.aggregate_rating}}</small></p>
+                  <a href="#" class="btn btn-primary">See more details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
       <!-- <div class="row">
           
       </div> -->
     </div>
     <script>
     </script>
+        <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
