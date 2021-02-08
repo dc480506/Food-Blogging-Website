@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Locate the user</title>
+        <meta
+          name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <style>
+              body {
+            margin: 0;
+            padding: 0;
+            background-image: url('img/foodBackground.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          .feed-link{
+            color:#cb202d ;
+          }
+          .author{
+            display:block;
+            float:right;
+          }
+        </style>
+        <!-- <link rel="stylesheet" href="css/styles.css"> -->    
+      </head>
+      <body ng-app="RSSFeed" ng-controller="Controller">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+              </div>
+            </div>
+          </nav>
+        
+        <!-- <div class="container mt-2">
+          <div class="jumbotron py-3" style="background-color:#ff4757">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="query" ng-model-options="{ debounce: 800 }" ng-change="fetchRestaurants()" aria-label="Text input with dropdown button">
+              <div class="input-group-append">
+                <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card Mode</button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" ng-click="showCard= !showCard" href="#">Card Mode</a>
+                  <div role="separator" class="dropdown-divider"></div>
+                  <a class="dropdown-item" ng-click="showCard= !showCard" href="#">Map Mode</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="container mx-2 my-3">
+            <div class="row">
+              <div class="widget_wrap col-md-4 sticky-top" style="width:320px;height:797px;display:inline-block;">
+                <iframe src="https://www.zomato.com/widgets/res_search_widget.php?city_id=3&theme=red&hideCitySearch=on&hideResSearch=on&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe>
+              </div>
+              <div class="col-md-8 d-flex align-items-stretch">
+                <div class="row">
+                  <div class="col-12" ng-repeat="feed in top_feeds">
+                  <div class="card mb-3">
+                  <!-- <img class="card-img-top" src={{restaurant.restaurant.featured_image}} alt="Card image cap"> -->
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <h4 class="card-title"><a class="feed-link" href="{{feed.link}}">{{feed.title}}</a></h4>
+                        <span class="card-text author"><strong>Author:</strong> {{feed.author}}</span>
+                      </div>
+                    </div>
+                      <p class="card-text"><small><strong>Date: </strong><span class="rss-date">{{feed.date}}</span></small></p>
+                      <p class="card-text"><small><strong>Description: </strong> {{feed.description}}</small></p>
+                      <a href="#" class="btn btn-primary">See more details</a>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+        </div> 
+
+        <script src="https://static.sekandocdn.net/static/feednami/feednami-client-v1.1.js"></script>
+        <script src="js/rss_script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type='text/javascript'>
+          function myFormat(dateTime) {
+          }
+          $(document).ready(function() {
+            $('.rss-date').each(function() 
+            {
+              date=new Date($(this).text()).toGMTString();
+              console.log(date);
+              $(this).text(date);
+            });
+          });
+          </script>     
+      </body>
+</html>
