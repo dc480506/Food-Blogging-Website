@@ -16,7 +16,9 @@
             padding: 0;
             background-image: url('img/foodBackground.jpg');
             background-repeat: no-repeat;
-            background-size: cover;
+            background-attachment: fixed;
+
+            /* background-size: cover; */
           }
           .feed-link{
             color:#cb202d ;
@@ -25,24 +27,33 @@
             display:block;
             float:right;
           }
+          .jumbotron{
+            background-color:#f4f4f4;
+          }
         </style>
         <!-- <link rel="stylesheet" href="css/styles.css"> -->    
       </head>
       <body ng-app="RSSFeed" ng-controller="Controller">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+        <div class="row">
+          <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-rounded shadow" style="z-index: 100;">
+            <a class="navbar-brand" href="#"><img src="img/Logo.jpg" width="30" height="30"><img/>&nbsp; Foodie</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse shadow-lg" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Featured Blogs</a>
+                <a class="nav-item nav-link" href="#">My Blogs</a>
+                <a class="nav-item nav-link" href="restaurants.html">Restaurants</a>
+                <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
               </div>
             </div>
           </nav>
+          </div>
+        </div>
+
         
         <!-- <div class="container mt-2">
           <div class="jumbotron py-3" style="background-color:#ff4757">
@@ -66,21 +77,26 @@
               </div>
               <div class="col-md-8 d-flex align-items-stretch">
                 <div class="row">
-                  <div class="col-12" ng-repeat="feed in top_feeds">
-                  <div class="card mb-3">
-                  <!-- <img class="card-img-top" src={{restaurant.restaurant.featured_image}} alt="Card image cap"> -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <h4 class="card-title"><a class="feed-link" href="{{feed.link}}">{{feed.title}}</a></h4>
-                        <span class="card-text author"><strong>Author:</strong> {{feed.author}}</span>
+                  <div class="jumbotron col-12 mb-0 py-2 sticky-top shadow">
+                    <h4 class="py-2 text-center"><img src="img/recipe-book.png"/> Latest Recipes</h4>
+                    <!-- <p>Bootstrap is th</p> -->
+                  </div>
+                  <div class="col-12 px-0" ng-repeat="feed in top_feeds">
+                    <div class="card mb-2">
+                    <!-- <img class="card-img-top" src={{restaurant.restaurant.featured_image}} alt="Card image cap"> -->
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <h4 class="card-title"><a class="feed-link" href="{{feed.link}}">{{feed.title}}</a></h4>
+                          <span class="card-text author"><strong>Author:</strong> {{feed.author}}</span>
+                        </div>
                       </div>
+                        <p class="card-text" style="font-size: 15px;"><strong>Date: </strong><span class="rss-date">{{feed.date}}</span></p>
+                        <p class="card-text"><strong>Description: </strong> {{feed.description}}</p>
+                        <!-- <a href="#" class="btn btn-primary">See more details</a> -->
+                        <p class="card-text"><strong>Categories: </strong> {{feed.categories}}</p>
                     </div>
-                      <p class="card-text"><small><strong>Date: </strong><span class="rss-date">{{feed.date}}</span></small></p>
-                      <p class="card-text"><small><strong>Description: </strong> {{feed.description}}</small></p>
-                      <a href="#" class="btn btn-primary">See more details</a>
-                  </div>
-                  </div>
+                    </div>
                   </div>
                 </div>
               </div>
