@@ -12,6 +12,11 @@ app.get('/restaurants',function(req,res){
     res.sendFile('pages/restaurants.html',{root: __dirname });
 })
 
+app.use(function(req,res){
+    res.type('.html')
+    res.status(404)
+    res.sendFile('pages/404.html',{root: __dirname });
+})
 
 app.listen(3000,()=>{
     console.log("Server running");
