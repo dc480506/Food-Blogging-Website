@@ -87,14 +87,16 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12">
-                          <h4 class="card-title"><a class="feed-link" href="{{feed.link}}">{{feed.title}}</a></h4>
+                          <h4 class="card-title"><a class="feed-link" href="{{feed.link}}">{{feed.title}}</a>
+                            <span class="text-right" ng-if="feed.isNew"><img width="40" height="40"src="img/new.png"/></span>
+                          </h4>
                           <span class="card-text author"><strong>Author:</strong> {{feed.author}}</span>
                         </div>
                       </div>
-                        <p class="card-text" style="font-size: 15px;"><strong>Date: </strong><span class="rss-date">{{feed.date}}</span></p>
-                        <p class="card-text"><strong>Description: </strong> {{feed.description}}</p>
-                        <!-- <a href="#" class="btn btn-primary">See more details</a> -->
-                        <p class="card-text"><strong>Categories: </strong> {{feed.categories}}</p>
+                        <p class="card-text" style="font-size: 15px;"><strong>Date: </strong><span class="rss-date">{{feed.published}}</span></p>
+                        <p class="card-text"><strong>Description: </strong> {{feed.content}}</p>
+                        <a href="{{feed.link}}" class="btn btn-primary">See more details</a>
+                        <!-- <p class="card-text"><strong>Categories: </strong> {{feed.categories}}</p> -->
                     </div>
                     </div>
                   </div>

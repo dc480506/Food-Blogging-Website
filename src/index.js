@@ -3,6 +3,7 @@ const path=require('path')
 const app=express()
 const restaurants=require('./routers/restaurants')
 const googleSignIn=require('./routers/googleSignIn');
+const rssFeed= require('./routers/rssFeed');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const passport = require('passport');
@@ -27,6 +28,10 @@ app.use(express.json());
 
 // For Restaurants details
 app.use('/api/restaurants',restaurants);
+
+// For RSS feeds
+app.use('/api/feeds',rssFeed);
+
 app.get('/',function(req,res){
     res.sendFile('pages/index.html',{root: __dirname });
 })
