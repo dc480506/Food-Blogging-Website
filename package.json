@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "fbw": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/dc480506/Food-Blogging-Website#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -16,12 +16,22 @@
       rel="stylesheet"
     />
     <style>
-          body {
+        body {
         margin: 0;
         padding: 0;
         background-image: url('img/foodBackground.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
+      }
+      .loader{
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('img/loading.gif') 
+                    50% 50% no-repeat rgb(249,249,249);
       }
       /* #map {
 
@@ -95,10 +105,10 @@
     <div class="container">
       <p class="mt-4 mx-4"><b>{{info}} :</b></p>
       <div class="row">
-        <div ng-show="showCard" id="map" class="ml-3 col-md-9">
+        <div ng-show="showCard && !isLoading" id="map" class="ml-3 col-md-9">
         </div>
       </div>
-        <div ng-show="!showCard">
+        <div ng-show="!showCard && !isLoading">
           <div class="row">
             <div class="col-md-3 d-flex align-items-stretch" ng-repeat="restaurant in top_restaurants">
             <!-- <div class="col-md-3"> -->
@@ -114,6 +124,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div ng-show="isLoading" class="loader">
+
         </div>
       
       <!-- <div class="row">

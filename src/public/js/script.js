@@ -1,13 +1,12 @@
-const zomato_URL="https://developers.zomato.com/api/v2.1"
-const zomato_key="c3b4720dc374f0a3d792ba3365dbbabd"
 const mapbox_URL= "pk.eyJ1IjoiZGM0ODA1MDYiLCJhIjoiY2trY2E0ZzJlMGN5YTJvcXJmNnU1Mm85ZiJ9.xn33xqgXnxzrEA8tPhEcww";
-
+const apiURL="http://localhost:3000/api";
 let app= angular.module("Mashup",[])
 
 app.controller("Controller",($scope,$http)=>{
     
       var userCoordinates;
       $scope.query=''
+      $scope.isLoading=true;
       var geojson = {
         type: 'FeatureCollection',
         features: []
@@ -104,45 +103,30 @@ app.controller("Controller",($scope,$http)=>{
       }
 // **************** Fetch Restaurants**************
       $scope.fetchRestaurants=()=>{
-        
-        // console.log($scope.query)
+        $scope.isLoading=true;
+        let data=  JSON.stringify({"lon":userCoordinates[0],"lat":userCoordinates[1]})
         if($scope.query==''){
-          $scope.info="Showing Nearby Restaurants"
-
-          $http.get(`${zomato_URL}/geocode?lon=${userCoordinates[0]}&lat=${userCoordinates[1]}`,
-          {
-              mode: "cors",
-              headers:{
-                  'user-key': zomato_key
-                }
-          }
-          )
-          .then((response)=>{
-             console.log(response.data)
-             $scope.restaurants=response.data.nearby_restaurants
-             $scope.top_restaurants= $scope.restaurants.slice(0,8)
-             makeMarkers($scope.restaurants);
-          // },(error)=>{
-
-          // })
-            });
+          $scope.info="Showing Nearby Restaurants"          
         }
         else{
           $scope.info=`You searched for "${$scope.query}"`;
-          $http.get(`${zomato_URL}/search?q=${$scope.query}&count=8`,
-          {
-              mode: "cors",
-              headers:{
-                  'user-key': zomato_key
-                }
-          }
+          data= JSON.stringify({"q":$scope.query,"count":8});
+        }
+        $http.post(`${apiURL}/restaurants/fetch-restaurants`,
+          data
           )
           .then((response)=>{
              console.log(response.data)
-             $scope.top_restaurants=response.data.restaurants
-             makeMarkers($scope.top_restaurants);
-            });
-        }
+             $scope.restaurants=response.data.restaurants
+             $scope.top_restaurants= $scope.restaurants.slice(0,8)
+             makeMarkers($scope.restaurants);
+             $scope.isLoading=false;
+          },(error)=>{
+            console.log(error.data.error);
+            $scope.info=`You have made an ${error.data.error}`;
+            $scope.isLoading=false;
+          });
+            // });
 
     }
 
