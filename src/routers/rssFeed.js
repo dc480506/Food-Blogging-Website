@@ -7,7 +7,7 @@ const feedURL= "https://www.vegrecipesofindia.com/feed/";
 router.use(cookieParser());
 
 router.get('/fetch-feeds',(req,res)=>{
-    var lastVisited=0;
+    var lastVisited=0,maxAge=7*24*60*60*1000;
     if(req.cookies.last_visited){
         lastVisited=parseInt(req.cookies.last_visited);
         console.log(lastVisited);
@@ -26,7 +26,7 @@ router.get('/fetch-feeds',(req,res)=>{
             else
                 feed.isNew=false;
         });
-        res.cookie('last_visited',currentTime).status(200).json({feeds:articles});
+        res.cookie('last_visited',currentTime,{ maxAge:maxAge , httpOnly: true }).status(200).json({feeds:articles});
     });
 })
 
