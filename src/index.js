@@ -32,7 +32,14 @@ app.use('/api/restaurants',restaurants);
 // For RSS feeds
 app.use('/api/feeds',rssFeed);
 
+app.get('/',function(req,res,next){
+    console.log("Middleware called at route '/': ");
+    console.log(req);
+    next();
+})
+
 app.get('/',function(req,res){
+    console.log("Final function Rendering page... ");
     res.sendFile('pages/index.html',{root: __dirname });
 })
 
