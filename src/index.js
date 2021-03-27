@@ -6,6 +6,10 @@ const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
 app.use(express.static(path.join(__dirname, 'public')));
 
+const mongoose=require('mongoose');
+//const User=mongoose.model('User');  
+var UserModel=require('./models/user.schema.js');
+
 const passport = require('passport');
 var userProfile;
 
