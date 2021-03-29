@@ -4,10 +4,18 @@ const app=express()
 const restaurants=require('./routers/restaurants')
 const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
+const user= require('./routers/user');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoose=require('mongoose');
-//const User=mongoose.model('User');  
+mongoose.connect("mongodb://localhost/FBW", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(()=>{
+    console.log("Connected to DB");
+}).catch((err)=>{
+    console.error("Could not connect to DB");
+})  
 var UserModel=require('./models/user.schema.js');
 
 const passport = require('passport');
@@ -29,6 +37,9 @@ passport.deserializeUser(function(obj, cb) {
 app.use('/auth/google',googleSignIn);
 
 app.use(express.json());
+
+// For User Model
+app.use('/api/user',user);
 
 // For Restaurants details
 app.use('/api/restaurants',restaurants);
