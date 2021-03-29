@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const bcrypt=require('bcrypt');
-//const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken')
 
 var userSchema = new mongoose.Schema({
     fullname: {
@@ -40,6 +40,10 @@ userSchema.pre('save',function(next){
 //Methods
 userSchema.methods.verifyPassword = function(password){
     return bcrypt.compareSync(password,this.password);
+};
+
+userSchema.methods.generateJwt = function() {
+    return jwt.sign({_id: this._id},'SECRET#123');
 };
 
 module.exports=mongoose.model('User', userSchema)
