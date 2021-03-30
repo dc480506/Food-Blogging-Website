@@ -5,7 +5,7 @@ const restaurants=require('./routers/restaurants')
 const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
 const user= require('./routers/user');
-const blog= require('./routers/blog');
+const userBlog= require('./routers/userBlog');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoose=require('mongoose');
@@ -44,7 +44,7 @@ app.use(express.json());
 app.use('/api/user',user);
 
 // For Blog Model
-app.use('/api/blogs',blog);
+app.use('/api/myblogs',userBlog);
 
 // For Restaurants details
 app.use('/api/restaurants',restaurants);
