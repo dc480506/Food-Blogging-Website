@@ -38,28 +38,22 @@ router.get('/',async (req,res)=>{
     res.send(blogs);
 })
 
-router.put('/',async (req,res)=>{
-    // const {error}= validateRegistrationData(req.body);
-    // if(error) return res.status(400).send(error.details[0].message);
-    // let user= await User.findOne({email:req.body.email});
-    // if(user) return res.status(400).send("User already exists");
+router.put('/:_id',async (req,res)=>{
+    const {error}= validateBlogData(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
+    let userID=req.user._id;
 
-    // user=new User(_.pick(req.body,['name','email','password']));
-    // await user.save();
-    //res.send(_.pick(user,['_id','name','email']));
-    res.send('Update blog');
+    let blogID=req.params._id;
+    let blog= await Blog.findOne({author:userID,_id:blogID});
+    if(!blog) return res.status(400).send("Blog doesn't exists");
+    const result=await Blog.findByIdAndUpdate(blogID,req.body,{new:true});
+    res.send(result);
 })
 
-router.delete('/',async (req,res)=>{
-    // const {error}= validateRegistrationData(req.body);
-    // if(error) return res.status(400).send(error.details[0].message);
-    // let user= await User.findOne({email:req.body.email});
-    // if(user) return res.status(400).send("User already exists");
-
-    // user=new User(_.pick(req.body,['name','email','password']));
-    // await user.save();
-    //res.send(_.pick(user,['_id','name','email']));
-    res.send('Delete blog');
+router.delete('/:_id',async (req,res)=>{
+    const result=await Blog.findByIdAndDelete(req.params._id);
+    res.send(result);
+    //res.send('Delete blog');
 })
 
 function validateBlogQuery(query) {

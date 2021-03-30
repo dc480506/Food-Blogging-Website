@@ -31,9 +31,15 @@ let Blog = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
-    publishTime: {
-        type: Number
-        //required: true
+    publishInfo: {
+        isPublish: { 
+            type: Boolean,
+            default: false
+        },
+        publishTime: {
+            type: Number
+            //required: true
+        }
     },
     image_url: {
         type: String
