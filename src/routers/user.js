@@ -33,7 +33,7 @@ router.post('/changePassword',async (req,res)=>{
     if(!user) return res.status(400).send("Email does not exists");
     const newPasswdHash=await user.generatePasswordHash(req.body.password);
     const result=await User.findByIdAndUpdate(user._id,{password:newPasswdHash});
-    res.send(result);
+    res.send(_.pick(result,['_id','email']));
 })
 
 router.get('/deleteAccount',checkAuthorization, async(req,res)=>{
