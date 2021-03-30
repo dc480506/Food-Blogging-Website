@@ -5,6 +5,7 @@ const restaurants=require('./routers/restaurants')
 const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
 const user= require('./routers/user');
+const blog= require('./routers/blog');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoose=require('mongoose');
@@ -16,7 +17,8 @@ mongoose.connect("mongodb://localhost/FBW", {
 }).catch((err)=>{
     console.error("Could not connect to DB");
 })  
-var UserModel=require('./models/user.schema.js');
+var UserModel=require('./models/user.schema');
+var BlogModel=require('./models/blog.schema');
 
 const passport = require('passport');
 var userProfile;
@@ -40,6 +42,9 @@ app.use(express.json());
 
 // For User Model
 app.use('/api/user',user);
+
+// For Blog Model
+app.use('/api/blogs',blog);
 
 // For Restaurants details
 app.use('/api/restaurants',restaurants);
