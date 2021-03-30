@@ -53,7 +53,6 @@ router.put('/:_id',async (req,res)=>{
 router.delete('/:_id',async (req,res)=>{
     const result=await Blog.findByIdAndDelete(req.params._id);
     res.send(result);
-    //res.send('Delete blog');
 })
 
 function validateBlogQuery(query) {
