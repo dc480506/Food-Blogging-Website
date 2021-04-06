@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
@@ -6,15 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent{
-  constructor(private router:Router){
+  constructor(private router:Router,private service: AuthService){
 
   }
-
+  invalidLogin=false;
   log(x:any){ console.log(x);}
 
-  submit(f:any){ 
-     
-    this.router.navigate(['/home']);
-    console.log(f.value);
+  submit(credentials:Object){ 
+    this.service.login(credentials)
+    .subscribe(resp=>{
+      if(resp){
+        this.router.navigate(['/home']);
+      }else{
+        this.invalidLogin=true;
+      }
+    }, error=>{
+      this.invalidLogin=true;
+    });
+    console.log(credentials);
   }
 }

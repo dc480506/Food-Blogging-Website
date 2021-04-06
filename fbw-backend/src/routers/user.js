@@ -16,6 +16,7 @@ router.post('/register',async (req,res)=>{
 })
 
 router.post('/login',async (req,res)=>{
+    console.log(req.body);
     const {error}= validateData(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     let user= await User.findOne({email:req.body.email});
@@ -23,7 +24,10 @@ router.post('/login',async (req,res)=>{
     const validPassword=await user.verifyPassword(req.body.password);
     if(!validPassword) return res.status(400).send("Invalid email or password");
     const token= user.generateAuthToken();
-    res.header('x-auth-token',token).json(_.pick(user,['_id','email']));
+    userObj=_.pick(user,['_id','email'])
+    tokenObj={'token':token}
+    _.assign(userObj,tokenObj);
+    res.header('x-auth-token',token).json(userObj);
 })
 
 router.post('/changePassword',async (req,res)=>{

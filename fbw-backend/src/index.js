@@ -6,6 +6,7 @@ const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
 const user= require('./routers/user');
 const userBlog= require('./routers/userBlog');
+const cors= require('./middleware/cors');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoose=require('mongoose');
@@ -34,7 +35,7 @@ passport.deserializeUser(function(obj, cb) {
     cb(null, obj);
 });
 
-
+app.use(cors);
 //For Google Sign In
 app.use('/auth/google',googleSignIn);
 

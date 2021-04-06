@@ -1,6 +1,9 @@
 <div class="card-body">
   <!-- <img > -->
-  <form #f="ngForm" (ngSubmit)="submit(f)">
+  <div class='alert alert-danger' *ngIf="invalidLogin">
+    Invalid Email or password
+  </div>
+  <form #f="ngForm" (ngSubmit)="submit(f.value)">
     <div class="form-group">
       <label for="email">Email address</label>
       <input 
