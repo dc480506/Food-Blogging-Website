@@ -6,20 +6,40 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { HomeComponent } from './app-navigation/home/home.component';
+import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: UserComponent,
-    children: [{ path: '', component: SignInComponent, canActivate:[RedirectHome] }],
+    children: [{ path: '', 
+    component: SignInComponent, 
+    canActivate:[RedirectHome] }],
   },
   {
     path: 'register',
     component: UserComponent,
-    children: [{ path: '', component: SignUpComponent, canActivate:[RedirectHome] }],
+    children: [{ path: '', 
+    component: SignUpComponent, 
+    canActivate:[RedirectHome] }],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: AppNavigationComponent, canActivate: [AuthGuard]},
+  { 
+  path: 'home', 
+  component: AppNavigationComponent, 
+  children: [{ path: '', 
+    component: HomeComponent, 
+    canActivate:[AuthGuard] }],
+  },
+  { 
+    path: 'myblogs', 
+    component: AppNavigationComponent, 
+    children: [{ path: '', 
+      component: MyBlogsComponent, 
+      canActivate:[AuthGuard] }],
+  },
+
 ];
 
 @NgModule({
