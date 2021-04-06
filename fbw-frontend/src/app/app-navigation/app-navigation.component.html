@@ -11,7 +11,7 @@
         <a class="nav-item nav-link" routerLinkActive="active" routerLink="/restaurants">Restaurants</a>
     </div>
 
-    <h6 class="black-text">Welcome FBW  </h6>
-    <button class="btn btn-dark ml-3" id="lgbtn">Logout</button>
+    <h6 class="black-text">Welcome, {{currentUser}} </h6>
+    <button class="btn btn-dark ml-3" id="lgbtn" (click)="logout()">Logout</button>
 </nav>
 <router-outlet></router-outlet>

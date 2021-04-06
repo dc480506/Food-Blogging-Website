@@ -1,3 +1,5 @@
+import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
+import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
 import { CommonService } from './services/common/common.service';
 import { AuthService } from './services/auth/auth.service';
 import { NgModule } from '@angular/core';
@@ -12,6 +14,13 @@ import { AppNavigationComponent } from './app-navigation/app-navigation.componen
 import { FormsModule } from '@angular/forms';
 
 import {HttpClientModule} from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
+
 
 @NgModule({
   declarations: [
@@ -25,11 +34,23 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:3000/"],
+        // disallowedRoutes: ["http://example.com/examplebadroute/"],
+        headerName: "x-auth-token",
+        authScheme: "",
+        throwNoTokenError: true,
+      },
+    }),
   ],
   providers: [
     AuthService,
-    CommonService
+    CommonService,
+    AuthGuard,
+    RedirectHome
   ],
   bootstrap: [AppComponent]
 })

@@ -17,6 +17,7 @@ export class SignInComponent{
     this.service.login(credentials)
     .subscribe(resp=>{
       if(resp){
+        console.log("Yo");
         this.router.navigate(['/home']);
       }else{
         this.invalidLogin=true;

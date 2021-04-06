@@ -1,3 +1,5 @@
+import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
+import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
 import { AppNavigationComponent } from './app-navigation/app-navigation.component';
 import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
@@ -9,15 +11,15 @@ const routes: Routes = [
   {
     path: 'login',
     component: UserComponent,
-    children: [{ path: '', component: SignInComponent }],
+    children: [{ path: '', component: SignInComponent, canActivate:[RedirectHome] }],
   },
   {
     path: 'register',
     component: UserComponent,
-    children: [{ path: '', component: SignUpComponent }],
+    children: [{ path: '', component: SignUpComponent, canActivate:[RedirectHome] }],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: AppNavigationComponent },
+  { path: 'home', component: AppNavigationComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
