@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent{
+  log(x:any){ console.log(x);}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  submit(f:any){  console.log(f.value);}
 }
