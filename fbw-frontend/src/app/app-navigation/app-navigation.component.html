@@ -1,0 +1,17 @@
+<nav class="navbar sticky-top navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <a [routerLink]="'/userprofile'" class="navbar-brand">
+        <img src="assets/img/Logo.jpg" width="35" height="35" alt="">
+        Foodie 
+    </a>
+    
+    <div class="collapse navbar-collapse navbar-nav">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home">Home</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/newblog">+New Blog</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/myblogs">My Blogs</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/restaurants">Restaurants</a>
+    </div>
+
+    <h6 class="black-text">Welcome FBW  </h6>
+    <button class="btn btn-dark ml-3" id="lgbtn">Logout</button>
+</nav>
+<router-outlet></router-outlet>
