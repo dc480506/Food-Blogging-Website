@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent{
+  constructor(private router:Router){
+
+  }
+
   log(x:any){ console.log(x);}
 
-  submit(f:any){  console.log(f.value);}
+  submit(f:any){ 
+     
+    this.router.navigate(['/home']);
+    console.log(f.value);
+  }
 }
