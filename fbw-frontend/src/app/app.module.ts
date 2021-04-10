@@ -1,3 +1,4 @@
+import { CustomInterceptor } from './custom-interceptor.module';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
 import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
 import { CommonService } from './services/common/common.service';
@@ -13,7 +14,7 @@ import { UserComponent } from './user/user.component';
 import { AppNavigationComponent } from './app-navigation/app-navigation.component';
 import { FormsModule } from '@angular/forms';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
@@ -54,7 +55,12 @@ export function tokenGetter() {
     AuthService,
     CommonService,
     AuthGuard,
-    RedirectHome
+    RedirectHome,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:CustomInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

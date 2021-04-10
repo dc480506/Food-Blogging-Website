@@ -27,7 +27,7 @@ router.post('/login',async (req,res)=>{
     userObj=_.pick(user,['_id','email'])
     tokenObj={'token':token}
     _.assign(userObj,tokenObj);
-    res.header('x-auth-token',token).json(userObj);
+    res.header('x-auth-token',token).cookie('Yo','hello',{httpOnly:false,secure:false}).json(userObj);
 })
 
 router.post('/changePassword',async (req,res)=>{
