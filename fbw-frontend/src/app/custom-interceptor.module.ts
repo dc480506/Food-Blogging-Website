@@ -20,14 +20,14 @@ constructor(private authService:AuthService){}
   ): Observable<HttpEvent<any>> {
     let headers = req.headers.set('Content-Type', 'application/json');
     if(this.authService.isLoggedin()){
-        console.log("Inside");
+        // console.log("Inside");
         console.log(this.authService.userToken)
         headers=headers.set('x-auth-token',this.authService.userToken);
     }
-    console.log(headers);
+    // console.log(headers);
     req = req.clone({withCredentials:true, headers: headers});
-    console.log(req);
-    console.log(document.cookie);
+    // console.log(req);
+    // console.log(document.cookie);
     return next.handle(req);
     // .pipe(
     //     map((event:HttpEvent<any>)=>{

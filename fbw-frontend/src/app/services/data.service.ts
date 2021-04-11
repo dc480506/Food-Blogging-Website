@@ -12,6 +12,7 @@ export class DataService{
     getAll(){
         return this.http.get(this.url)
                .pipe(
+                   map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
                 )
     }
@@ -19,6 +20,7 @@ export class DataService{
     create(resource:any){
         return this.http.post(this.url+"/",JSON.stringify(resource))
                .pipe(
+                    map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
                 )
     }
@@ -26,6 +28,7 @@ export class DataService{
     update(resource:any){
         return this.http.put(this.url+"/"+resource.id,JSON.stringify(resource))
                .pipe(
+                    map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
                 )
     }
@@ -33,6 +36,7 @@ export class DataService{
     delete(id:String){
         return this.http.get(this.url+"/"+id)
                .pipe(
+                    map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
                 )
     }

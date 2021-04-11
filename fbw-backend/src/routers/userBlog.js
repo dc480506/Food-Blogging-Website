@@ -4,10 +4,11 @@ const Joi = require('joi');
 const router = express.Router();
 const {Blog,validateBlogData}= require('../models/blog.schema');
 const checkAuthorization =require('../middleware/auth');
+const storage = require('../helpers/storage');
 
 router.use(checkAuthorization);
 
-router.post('/',async (req,res)=>{
+router.post('/',storage,async (req,res)=>{
     // console.log("Yo");
     const {error}= validateBlogData(req.body);
     if(error) return res.status(400).send(error.details[0].message);
@@ -18,10 +19,12 @@ router.post('/',async (req,res)=>{
 
     blog=new Blog(_.pick(req.body,['title','subtitle','summary','description']));
     blog.author=userID;
-    await blog.save();
+    blog.image_url=req.file.filename;
+    // await blog.save();
     //res.send(_.pick(user,['_id','name','email']));
     res.send(blog);
 })
+
 
 router.get('/',async (req,res)=>{
     const {error}= validateBlogQuery(req.query);

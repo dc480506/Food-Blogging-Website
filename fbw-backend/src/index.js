@@ -9,6 +9,7 @@ const userBlog= require('./routers/userBlog');
 const cors= require('./middleware/cors');
 // const cors= require('cors');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/blogImages', express.static(path.join(__dirname,'blogUploadImages')));
 
 const mongoose=require('mongoose');
 mongoose.connect("mongodb://localhost/FBW", {
