@@ -1,3 +1,4 @@
+import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
 import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
 import { AppNavigationComponent } from './app-navigation/app-navigation.component';
@@ -37,7 +38,11 @@ const routes: Routes = [
     component: AppNavigationComponent, 
     children: [{ path: '', 
       component: MyBlogsComponent, 
-      canActivate:[AuthGuard] }],
+      canActivate:[AuthGuard] },
+      { path: 'createBlog', 
+      component: CreateBlogComponent, 
+      canActivate:[AuthGuard] }
+    ],
   },
 
 ];

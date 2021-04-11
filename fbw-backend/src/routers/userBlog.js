@@ -8,6 +8,7 @@ const checkAuthorization =require('../middleware/auth');
 router.use(checkAuthorization);
 
 router.post('/',async (req,res)=>{
+    // console.log("Yo");
     const {error}= validateBlogData(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     let userID=req.user._id;

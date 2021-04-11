@@ -1,3 +1,5 @@
+import { AppErrorHandler } from './errors/app-error-handler';
+import { ErrorHandler } from '@angular/core';
 import { CustomInterceptor } from './custom-interceptor.module';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
 import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
@@ -18,6 +20,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
+import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -34,22 +37,23 @@ export function tokenGetter() {
     AppNavigationComponent,
     HomeComponent,
     MyBlogsComponent,
+    CreateBlogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ["http://localhost:3000/"],
-        // disallowedRoutes: ["http://example.com/examplebadroute/"],
-        headerName: "x-auth-token",
-        authScheme: "",
-        throwNoTokenError: true,
-      },
-    }),
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: tokenGetter,
+    //     allowedDomains: ["http://localhost:3000/"],
+    //     // disallowedRoutes: ["http://example.com/examplebadroute/"],
+    //     headerName: "x-auth-token",
+    //     authScheme: "",
+    //     throwNoTokenError: true,
+    //   },
+    // }),
   ],
   providers: [
     AuthService,
@@ -60,6 +64,10 @@ export function tokenGetter() {
       provide:HTTP_INTERCEPTORS,
       useClass:CustomInterceptor,
       multi:true
+    },
+    {
+      provide:ErrorHandler,
+      useClass:AppErrorHandler
     }
   ],
   bootstrap: [AppComponent]

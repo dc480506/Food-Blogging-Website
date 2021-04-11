@@ -16,7 +16,7 @@ export class AuthService extends CommonService {
     super();
   }
   login(credentials:any){
-    return this.http.post(this.url+'login',JSON.stringify(credentials),{headers:this.headers,observe: 'response'})
+    return this.http.post(this.url+'login',JSON.stringify(credentials),{observe: 'response'})
     .pipe(map(response=> {
 
       let data=JSON.parse(JSON.stringify(response)).body;
@@ -56,4 +56,10 @@ export class AuthService extends CommonService {
     return decodedToken.name;
     
   }
+  get userToken(){
+    let token=localStorage.getItem('token');
+    if(!token)
+      return "";
+    return token;
+    }
 }
