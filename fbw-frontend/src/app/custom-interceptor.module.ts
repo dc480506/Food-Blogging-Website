@@ -18,7 +18,18 @@ constructor(private authService:AuthService){}
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let headers = req.headers.set('Content-Type', 'application/json');
+    console.log(req.headers);
+    let headers=req.headers;
+  
+    if (!req.headers.has('Content-Type')) {
+      console.log("Checking header");
+      const detectedType = req.detectContentTypeHeader();
+      console.log("Detected:",detectedType)
+      // Sometimes Content-Type detection fails.
+      if (detectedType !== null) {
+        headers=headers.set("Content-Type",detectedType);
+      }
+    }
     if(this.authService.isLoggedin()){
         // console.log("Inside");
         console.log(this.authService.userToken)

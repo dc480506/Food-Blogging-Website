@@ -1,7 +1,7 @@
 import { AppError } from '../errors/app-error';
 import { NotFoundError } from '../errors/not-found-error';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { BadInputError } from '../errors/bad-input-error';
 export class DataService{
@@ -18,15 +18,14 @@ export class DataService{
     }
 
     create(resource:any){
-        return this.http.post(this.url+"/",JSON.stringify(resource))
+        return this.http.post(this.url+"/",resource)
                .pipe(
                     map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
                 )
     }
-
     update(resource:any){
-        return this.http.put(this.url+"/"+resource.id,JSON.stringify(resource))
+        return this.http.put(this.url+"/"+resource.id,resource)
                .pipe(
                     map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)

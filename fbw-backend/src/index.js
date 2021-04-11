@@ -7,6 +7,8 @@ const rssFeed= require('./routers/rssFeed');
 const user= require('./routers/user');
 const userBlog= require('./routers/userBlog');
 const cors= require('./middleware/cors');
+const bodyParser = require('body-parser');
+
 // const cors= require('cors');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/blogImages', express.static(path.join(__dirname,'blogUploadImages')));
@@ -41,6 +43,7 @@ app.use(cors);
 //For Google Sign In
 app.use('/auth/google',googleSignIn);
 
+app.use(bodyParser.json());
 app.use(express.json());
 
 // For User Model

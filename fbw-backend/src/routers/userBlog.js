@@ -20,7 +20,7 @@ router.post('/',storage,async (req,res)=>{
     blog=new Blog(_.pick(req.body,['title','subtitle','summary','description']));
     blog.author=userID;
     blog.image_url=req.file.filename;
-    // await blog.save();
+    await blog.save();
     //res.send(_.pick(user,['_id','name','email']));
     res.send(blog);
 })

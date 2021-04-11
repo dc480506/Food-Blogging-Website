@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { MyBlogService } from './../../../services/my-blog/my-blog.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-blog',
@@ -16,28 +16,56 @@ import { FormGroup } from '@angular/forms';
 //   }
 
 // }
-export class CreateBlogComponent {
+export class CreateBlogComponent{
+  form: FormGroup;
+  imageData: string;
 
-  blogCreated=false;
-  title: string = "";
-  subtitle: string = "";
-  imageUrl: string = "";
-  summary: string = "";
-  description: string = "";
-  blogId: string="";
-  constructor(private service:MyBlogService){}
-  
-
-  onFileSelect(event:any) {
-
+  constructor(private service:MyBlogService){
+    this.form = new FormGroup({
+      title: new FormControl(null),
+      subtitle: new FormControl(null),
+      description: new FormControl(null),
+      summary: new FormControl(null),
+      image: new FormControl(null)
+    });
+    this.imageData="";
   }
-  submitBlogData(blog:Object){
-    this.service.create(blog)
+  
+  onFileSelect(event: Event) {
+      const htmlInputElem=event.target as HTMLInputElement;
+      if(htmlInputElem.files!=null){
+        const file = htmlInputElem.files[0];
+        this.form.patchValue({ image: file });
+        const allowedMimeTypes = ["image/png", "image/jpeg", "image/jpg"];
+        if (file && allowedMimeTypes.includes(file.type)) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            console.log("Read file");
+            this.imageData = reader.result as string;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+  }
+  
+  onSubmit(){
+    this.form.disable();
+    const formData = new FormData();
+    // console.log("Type is: ",this.form.value)
+    var obj=this.form.value
+    for ( var key in this.form.value ) {
+      formData.append(key, obj[key]);
+  }
+  // console.log("Form data is: ",formData,typeof(formData))
+
+    this.service.create(formData)
     .subscribe(
-      (response)=> {this.blogId=response._id, this.blogCreated=true},
-      // (error)=>{
-      //   if error instanceof 
-      // }
+      (response)=>{console.log(response)}
     )
+  }
+
+  clear(){
+    this.form.reset();
+    this.form.enable();
   }
 }

@@ -7,6 +7,7 @@ import { CommonService } from './services/common/common.service';
 import { AuthService } from './services/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     // JwtModule.forRoot({
     //   config: {
@@ -65,10 +67,10 @@ export function tokenGetter() {
       useClass:CustomInterceptor,
       multi:true
     },
-    {
-      provide:ErrorHandler,
-      useClass:AppErrorHandler
-    }
+    // {
+    //   provide:ErrorHandler,
+    //   useClass:AppErrorHandler
+    // }
   ],
   bootstrap: [AppComponent]
 })
