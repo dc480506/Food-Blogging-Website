@@ -6,11 +6,16 @@ import { catchError, map } from 'rxjs/operators';
 import { BadInputError } from '../errors/bad-input-error';
 export class DataService{
     private url="http://localhost:3000/api/";
+    baseImageURL="http://localhost:3000/blogImages/";
     constructor(path:String,private http:HttpClient){
         this.url+=path;
     }
-    getAll(){
-        return this.http.get(this.url)
+    get(page?:Number,limit?:Number){
+        var tempURL=this.url;
+        if(page && limit){
+            tempURL=this.url+`?page=${page}&limit=${limit}`;
+        }
+        return this.http.get(tempURL)
                .pipe(
                    map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)

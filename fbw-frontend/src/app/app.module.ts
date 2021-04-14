@@ -1,3 +1,4 @@
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppErrorHandler } from './errors/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { CustomInterceptor } from './custom-interceptor.module';
@@ -50,6 +51,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InfiniteScrollModule,
     // JwtModule.forRoot({
     //   config: {
     //     tokenGetter: tokenGetter,

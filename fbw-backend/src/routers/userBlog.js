@@ -38,10 +38,10 @@ router.get('/',async (req,res)=>{
     const limit=parseInt(req.query.limit);
     let userID=req.user._id;
     let blogs= await Blog.find({author:userID})
-    .populate('author','name email -_id')
     .sort([['_id', -1]])
     .limit(limit)
     .skip((page-1)*limit)
+    .populate('author','name email -_id')
     .exec();
     res.send(blogs);
 })

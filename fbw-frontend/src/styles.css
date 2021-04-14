@@ -2,9 +2,49 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
+
 body{
     margin: 0;
     background-image: url('/assets/img/foodBackground.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.blog-date {
+    font-size: 12px;
+    line-height: normal;
+    color: #b5b5b5;
+}
+
+.blog-title {
+    font-size: 28px!important;
+    line-height: 38px!important;
+    color: #000!important;
+    font-family: Okra,Arial,sans-serif!important;
+}
+
+.blog-summary {
+    font-size: 16px!important;
+    line-height: 26px!important;
+    color: #828282!important;
+}
+.bi-hand-thumbs-up-fill{
+    color:#2ecc71
+}
+.bi-hand-thumbs-down-fill{
+    color:#d63031
+}
+.bi-chat-fill{
+    color:black
+}
+.likesPreview,.dislikesPreview,.commentsPreview{
+    font-family: Okra,Arial,sans-serif!important;
+    font-size: 14px!important;
+}
+.blog-results{
+    overflow-y: auto; 
+    height: 70vh;
+    margin: auto;
+    bottom: 0;
+    right: 0;
 }
