@@ -22,6 +22,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
 import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
+import { TitleCasePipe } from './custom-pipe/title-case.pipe';
+import { TitleCaseDirective } from './custom-directives/title-case.directive';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -39,6 +41,8 @@ export function tokenGetter() {
     HomeComponent,
     MyBlogsComponent,
     CreateBlogComponent,
+    TitleCasePipe,
+    TitleCaseDirective
   ],
   imports: [
     BrowserModule,

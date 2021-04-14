@@ -8,6 +8,7 @@
           type="text"
           class="form-control"
           id="title"
+          appTitleCase
           formControlName="title"
         />
       </div>
@@ -38,6 +39,17 @@
           name="description"
           rows="10"
         ></textarea>
+      </div>
+      <div class="input-group mb-3">
+        <label for="publishNow">Publish Now </label>
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" 
+            id="publishNow"
+            formControlName="publishNow"
+            >
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="imageUrl">Image File</label>
