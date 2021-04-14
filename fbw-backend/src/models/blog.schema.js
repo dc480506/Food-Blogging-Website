@@ -59,7 +59,8 @@ function validateBlogData(blog) {
         title: Joi.string().min(5).max(50).required(),
         subtitle: Joi.string().min(5).max(50).required(),
         summary: Joi.string().min(5).max(500).required(),
-        description: Joi.string().min(5).max(2000).required()
+        description: Joi.string().min(5).max(2000).required(),
+        publishNow: Joi.boolean().required()
     });
     return schema.validate(blog);
 }

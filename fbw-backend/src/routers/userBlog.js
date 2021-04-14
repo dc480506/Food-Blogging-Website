@@ -18,6 +18,10 @@ router.post('/',storage,async (req,res)=>{
     if(blog) return res.status(400).send("Blog with the same title already exists");
 
     blog=new Blog(_.pick(req.body,['title','subtitle','summary','description']));
+    if(req.body.publishNow=="true"){
+        blog.publishInfo.isPublish=true;
+        blog.publishInfo.publishTime=Date.now();
+    }
     blog.author=userID;
     blog.image_url=req.file.filename;
     await blog.save();

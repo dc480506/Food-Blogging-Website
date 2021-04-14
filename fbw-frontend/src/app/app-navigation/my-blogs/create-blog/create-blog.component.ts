@@ -26,6 +26,7 @@ export class CreateBlogComponent{
       subtitle: new FormControl(null),
       description: new FormControl(null),
       summary: new FormControl(null),
+      publishNow: new FormControl(false),
       image: new FormControl(null)
     });
     this.imageData="";
