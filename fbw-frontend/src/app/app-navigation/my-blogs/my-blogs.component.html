@@ -72,7 +72,7 @@
                             <b>{{ blog.author.name}}</b>
                             <span> | {{blog.publishInfo?.publishTime | date:"medium"}}</span>
                         </div>
-                        <a href="#" class="blog-title">
+                        <a [routerLink]="['/myblogs/blog',blog._id]" class="blog-title">
                             {{blog.title}}
                         </a>
                         <div class="blog-summary">

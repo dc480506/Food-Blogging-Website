@@ -25,6 +25,7 @@ import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
 import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
 import { TitleCasePipe } from './custom-pipe/title-case.pipe';
 import { TitleCaseDirective } from './custom-directives/title-case.directive';
+import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -42,8 +43,9 @@ export function tokenGetter() {
     HomeComponent,
     MyBlogsComponent,
     CreateBlogComponent,
-    TitleCasePipe,
-    TitleCaseDirective
+    // TitleCasePipe,
+    TitleCaseDirective,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

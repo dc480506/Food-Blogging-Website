@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
+import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,14 @@ const routes: Routes = [
       canActivate:[AuthGuard] }
     ],
   },
-
+  { 
+    path: 'myblogs', 
+    component: AppNavigationComponent, 
+    children: [{ path: 'blog/:id', 
+      component: BlogComponent, 
+      canActivate:[AuthGuard] }
+    ],
+  },
 ];
 
 @NgModule({
