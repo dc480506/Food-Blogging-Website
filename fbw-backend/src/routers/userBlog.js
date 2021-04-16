@@ -46,6 +46,17 @@ router.get('/',async (req,res)=>{
     res.send(blogs);
 })
 
+router.get('/:_id',async (req,res)=>{
+    // let userID=req.user._id;
+    let blogID=req.params._id;
+
+    let blog= await Blog.findOne({_id:blogID});
+    if(!blog) return res.status(400).send("1 Blog doesn't exists");
+    const result=await Blog.findById(blogID)
+    .populate('author','name email -_id');
+    res.send(result);
+})
+
 router.put('/:_id',async (req,res)=>{
     const {error}= validateBlogData(req.body);
     if(error) return res.status(400).send(error.details[0].message);

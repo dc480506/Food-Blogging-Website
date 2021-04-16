@@ -1,1 +1,40 @@
-<p>{{ id }}</p>
+<div class="container">
+        <div class="row">
+            <div class="col-md-11 mx-auto">
+                <div class="card shadow my-4 border-0">
+                    <div class="row">
+                        <div class="col-md-5 content">
+                            <img src="{{blogImageBaseURL + blog.image_url}}" class=" img-fluid " alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h3 class="card-title" id="title">{{blog.title}}</h3>
+                                <h5 class="card-subtitle mb-2 text-muted" id="subtitle">{{blog.subtitle}}</h5>
+                                <p class="text-right text-muted"> - {{ blog.author.name }}</p>
+                                <p class="text-left text-muted"> {{blog.publishInfo?.publishTime | date:"medium"}} </p>
+                                <br>
+                                <h5>Summary : </h5>
+                                <p class="card-text">{{blog.summary}}</p>
+                                <h5>Description : </h5>
+                                <div class="overflowTest">{{blog.description}}</div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4><button type="button" class="btn btn-success bmd-btn-fab active"> <i class="bi bi-hand-thumbs-up-fill"></i> 
+                                        </button>   :{{blog.likedBy.length}}</h4> 
+                                        <button class="btn btn-raised btn-block btn-info mt-5 mr-3" >Edit</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4><button type="button" class="btn btn-danger bmd-btn-fab active"><i class="bi bi-hand-thumbs-down-fill"></i> 
+                                        </button>  : {{blog.dislikedBy.length}}</h4> 
+                                        <button class="btn btn-raised btn-block btn-danger mt-5">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

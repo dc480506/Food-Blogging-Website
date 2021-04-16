@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MyBlogService } from 'src/app/services/my-blog/my-blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -9,8 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class BlogComponent implements OnInit {
 
   id:any;
+  blog:any;
+  blogImageBaseURL;
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute, private service: MyBlogService) { 
+    this.blogImageBaseURL=this.service.baseImageURL;
+  }
 
 
   ngOnInit(): void {
@@ -19,6 +24,14 @@ export class BlogComponent implements OnInit {
       this.id=params.get('id');
       console.log(this.id);
     });
+
+    console.log('id:'+this.id);
+    this.service.get(undefined,undefined,this.id).subscribe((res) => {
+      this.blog = res;
+      console.log(res);
+    });
   }
+
+  
 
 }

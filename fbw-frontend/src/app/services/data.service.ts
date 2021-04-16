@@ -10,11 +10,13 @@ export class DataService{
     constructor(path:String,private http:HttpClient){
         this.url+=path;
     }
-    get(page?:Number,limit?:Number){
+    get(page?:Number,limit?:Number,id?:string){
         var tempURL=this.url;
         if(page && limit){
             tempURL=this.url+`?page=${page}&limit=${limit}`;
         }
+        else if(id) {tempURL=this.url+'/'+id}
+        console.log(tempURL);
         return this.http.get(tempURL)
                .pipe(
                    map(response=>JSON.parse(JSON.stringify(response))),
