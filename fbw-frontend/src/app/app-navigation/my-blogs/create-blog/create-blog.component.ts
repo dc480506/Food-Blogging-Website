@@ -1,4 +1,3 @@
-import { HttpResponse } from '@angular/common/http';
 import { MyBlogService } from './../../../services/my-blog/my-blog.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';

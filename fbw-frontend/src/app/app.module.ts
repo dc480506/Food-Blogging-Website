@@ -1,6 +1,5 @@
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AppErrorHandler } from './errors/app-error-handler';
-import { ErrorHandler } from '@angular/core';
+import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 import { CustomInterceptor } from './custom-interceptor.module';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
 import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
@@ -26,6 +25,8 @@ import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/creat
 import { TitleCasePipe } from './custom-pipe/title-case.pipe';
 import { TitleCaseDirective } from './custom-directives/title-case.directive';
 import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
+// import { ConfirmBoxComponent } from './components/confirm-box/confirm-box/confirm-box.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -46,6 +47,7 @@ export function tokenGetter() {
     // TitleCasePipe,
     TitleCaseDirective,
     BlogComponent,
+    // ConfirmBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,9 @@ export function tokenGetter() {
     ReactiveFormsModule,
     HttpClientModule,
     InfiniteScrollModule,
+    BrowserAnimationsModule,
+    NgxBootstrapConfirmModule,
+
     // JwtModule.forRoot({
     //   config: {
     //     tokenGetter: tokenGetter,

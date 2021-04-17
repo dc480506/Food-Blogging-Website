@@ -1,11 +1,14 @@
 const _= require('lodash');
 const express= require('express');
+const fs=require('fs')
+const mongoose= require('mongoose');
 const Joi = require('joi');
 const router = express.Router();
 const {Blog,validateBlogData}= require('../models/blog.schema');
 const checkAuthorization =require('../middleware/auth');
 const storage = require('../helpers/storage');
 
+let path="./src/blogUploadImages/";
 router.use(checkAuthorization);
 
 router.post('/',storage,async (req,res)=>{
@@ -49,9 +52,10 @@ router.get('/',async (req,res)=>{
 router.get('/:_id',async (req,res)=>{
     // let userID=req.user._id;
     let blogID=req.params._id;
+    if(!mongoose.Types.ObjectId.isValid(blogID)) return res.status(404).send("Blog doesn't exists");
+    let blog= await Blog.findById(blogID);
 
-    let blog= await Blog.findOne({_id:blogID});
-    if(!blog) return res.status(400).send("1 Blog doesn't exists");
+    if(!blog) return res.status(404).send("1 Blog doesn't exists");
     const result=await Blog.findById(blogID)
     .populate('author','name email -_id');
     res.send(result);
@@ -70,6 +74,12 @@ router.put('/:_id',async (req,res)=>{
 })
 
 router.delete('/:_id',async (req,res)=>{
+    let blog= await Blog.findOne({_id:req.params._id});
+    if(!blog) return res.status(404).send("Blog Not Found");
+    fs.unlink(path+blog.image_url,(err)=>{
+        if (err) throw err;
+        console.log('File deleted!');
+    });
     const result=await Blog.findByIdAndDelete(req.params._id);
     res.send(result);
 })

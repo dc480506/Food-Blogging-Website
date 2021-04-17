@@ -16,7 +16,7 @@ export class MyBlogsComponent implements OnInit {
   notscrolly = true;
   notEmptyResult = true;
   page = 1;
-  limit = 2;
+  limit = 4;
   ngOnInit(): void {
     this.loadInitData();
   }
@@ -36,6 +36,7 @@ export class MyBlogsComponent implements OnInit {
   }
   loadNextData() {
     this.service.get(this.page, this.limit).subscribe((res) => {
+      this.page+=1;
       if (res.length == 0) {
         this.notEmptyResult = false;
       }
