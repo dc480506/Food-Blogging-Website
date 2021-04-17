@@ -27,6 +27,7 @@ import { TitleCaseDirective } from './custom-directives/title-case.directive';
 import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
 // import { ConfirmBoxComponent } from './components/confirm-box/confirm-box/confirm-box.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/update-blog/update-blog.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -47,6 +48,7 @@ export function tokenGetter() {
     // TitleCasePipe,
     TitleCaseDirective,
     BlogComponent,
+    UpdateBlogComponent,
     // ConfirmBoxComponent,
   ],
   imports: [

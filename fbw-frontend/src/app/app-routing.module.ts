@@ -10,6 +10,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
 import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
+import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/update-blog/update-blog.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,14 @@ const routes: Routes = [
     component: AppNavigationComponent, 
     children: [{ path: 'blog/:id', 
       component: BlogComponent, 
+      canActivate:[AuthGuard] }
+    ],
+  },
+  { 
+    path: 'myblogs', 
+    component: AppNavigationComponent, 
+    children: [{ path: 'editBlog/:id', 
+      component: UpdateBlogComponent, 
       canActivate:[AuthGuard] }
     ],
   },

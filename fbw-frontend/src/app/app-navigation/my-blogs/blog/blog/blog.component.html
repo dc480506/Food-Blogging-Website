@@ -26,7 +26,7 @@
                 <a class="btn btn-danger float-right mr-3" (click)="delete()" style="font-size: small;">                 
                   <i class="bi bi-trash"></i>
                </a>
-                <a class="btn btn-info mr-3 float-right" style="font-size: small;">                 
+                <a class="btn btn-info mr-3 float-right" [routerLink]="['/myblogs/editBlog',blog._id]" style="font-size: small;">                 
                    <i class="bi bi-pencil"></i>
                 </a>
               </h3>

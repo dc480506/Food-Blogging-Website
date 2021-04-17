@@ -61,16 +61,24 @@ router.get('/:_id',async (req,res)=>{
     res.send(result);
 })
 
-router.put('/:_id',async (req,res)=>{
-    const {error}= validateBlogData(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+router.put('/:_id',storage,async (req,res)=>{
+    // const {error}= validateBlogData(req.body);
+    // if(error) return res.status(400).send(error.details[0].message);
     let userID=req.user._id;
-
     let blogID=req.params._id;
     let blog= await Blog.findOne({author:userID,_id:blogID});
     if(!blog) return res.status(400).send("Blog doesn't exists");
+
+    if(req.file){
+        fs.unlink(path+blog.image_url,(err)=>{
+            if (err) throw err;
+            console.log('File deleted!');
+        });
+        req.body.image_url=req.file.filename;
+    }
+    console.log(req.body)
     const result=await Blog.findByIdAndUpdate(blogID,req.body,{new:true});
-    res.send(result);
+    res.send("Yo");
 })
 
 router.delete('/:_id',async (req,res)=>{

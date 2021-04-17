@@ -31,8 +31,8 @@ export class DataService{
                     catchError(this.handleError)
                 )
     }
-    update(resource:any){
-        return this.http.put(this.url+"/"+resource.id,resource)
+    update(id:String,resource:any){
+        return this.http.put(this.url+"/"+id,resource)
                .pipe(
                     map(response=>JSON.parse(JSON.stringify(response))),
                     catchError(this.handleError)
