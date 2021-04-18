@@ -1,3 +1,5 @@
+import { Toastr } from './../../../common/toastr';
+import { ToastrService } from 'ngx-toastr';
 import { MyBlogService } from './../../../services/my-blog/my-blog.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -15,11 +17,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 //   }
 
 // }
-export class CreateBlogComponent{
+export class CreateBlogComponent extends Toastr{
   form: FormGroup;
   imageData: string;
 
-  constructor(private service:MyBlogService){
+  constructor(private service:MyBlogService,toastr:ToastrService){
+    super(toastr);
     this.form = new FormGroup({
       title: new FormControl(null),
       subtitle: new FormControl(null),
@@ -60,7 +63,7 @@ export class CreateBlogComponent{
 
     this.service.create(formData)
     .subscribe(
-      (response)=>{console.log(response)}
+      (response)=>{console.log(response); this.showSuccess("Your blog has been created successfully","Blog Created")}
     )
   }
 
@@ -68,4 +71,5 @@ export class CreateBlogComponent{
     this.form.reset();
     this.form.enable();
   }
+  
 }

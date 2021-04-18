@@ -28,6 +28,7 @@ import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.componen
 // import { ConfirmBoxComponent } from './components/confirm-box/confirm-box/confirm-box.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/update-blog/update-blog.component';
+import { ToastrModule } from 'ngx-toastr';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -49,7 +50,7 @@ export function tokenGetter() {
     TitleCaseDirective,
     BlogComponent,
     UpdateBlogComponent,
-    // ConfirmBoxComponent,
+// ToastrModule added
   ],
   imports: [
     BrowserModule,
@@ -60,6 +61,14 @@ export function tokenGetter() {
     InfiniteScrollModule,
     BrowserAnimationsModule,
     NgxBootstrapConfirmModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 5000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+        closeButton:true
+      }
+    ), 
 
     // JwtModule.forRoot({
     //   config: {

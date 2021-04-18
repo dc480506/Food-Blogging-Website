@@ -78,7 +78,7 @@ router.put('/:_id',storage,async (req,res)=>{
     }
     console.log(req.body)
     const result=await Blog.findByIdAndUpdate(blogID,req.body,{new:true});
-    res.send("Yo");
+    res.send(result);
 })
 
 router.delete('/:_id',async (req,res)=>{

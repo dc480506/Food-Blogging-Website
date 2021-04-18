@@ -4,20 +4,23 @@ import { Component, OnInit } from '@angular/core';
 import { CreateBlogComponent } from '../../create-blog/create-blog.component';
 import { ActivatedRoute } from '@angular/router';
 import { NotFoundError } from 'src/app/errors/not-found-error';
+import {ToastrService } from 'ngx-toastr';
+import { Toastr } from 'src/app/common/toastr';
 
 @Component({
   selector: 'app-update-blog',
   templateUrl: './update-blog.component.html',
   styleUrls: ['./update-blog.component.css']
 })
-export class UpdateBlogComponent implements OnInit{
+export class UpdateBlogComponent extends Toastr implements OnInit{
   id:any;
   blog:any;
   form:FormGroup;
   blogImageBaseURL;
   fileChanged=false;
   imageData:string="";
-  constructor(private service:MyBlogService, private route: ActivatedRoute) { 
+  constructor(private service:MyBlogService, private route: ActivatedRoute,toastr:ToastrService) { 
+    super(toastr);
     this.blogImageBaseURL = this.service.baseImageURL;
     this.form = new FormGroup({
       title: new FormControl(null),
@@ -69,6 +72,7 @@ export class UpdateBlogComponent implements OnInit{
     this.service.update(this.id,formData)
     .subscribe(res=>{
       console.log(res);
+      this.showSuccess("Your blog has been updated successfully","Blog Updated");
     })
   }
 
