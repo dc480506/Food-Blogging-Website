@@ -1,17 +1,62 @@
 <div class="card-body">
-    <form>
+    <form [formGroup]='form'>
         
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+        <input 
+          formControlName="name"
+          type="text" class="form-control" 
+          name="name" id="name" 
+          placeholder="Enter your name">
+          <div 
+          *ngIf="name?.touched && form.get('name')?.invalid" 
+          class="alert alert-danger">
+            <div *ngIf="name?.errors?.required">
+              Name is required.
+            </div>
+          </div>
       </div>
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email">
+        <input 
+          formControlName="email"
+          type="email" class="form-control" 
+          name="email" id="email" 
+          placeholder="Enter your email">
+          <div 
+          *ngIf="email?.touched && form.get('email')?.invalid" 
+          class="alert alert-danger">
+            <div *ngIf="email?.errors?.required">
+              Email is required.
+            </div>
+            <div *ngIf="email?.errors?.email">
+              Email is invalid.
+            </div>
+            <div *ngIf="email?.errors?.shouldBeUnique">
+              Email is already taken.
+            </div>
+          </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        <input 
+          formControlName="password"
+          type="password" class="form-control" 
+          name="password" id="password" 
+          placeholder="Password">
+          <div 
+          *ngIf="password?.touched && form.get('password')?.invalid" 
+          class="alert alert-danger">
+            <div *ngIf="password?.errors?.required">
+              password is required.
+            </div>
+            <div *ngIf="password?.errors?.minlength">
+              password should be of minimum {{password?.errors?.minlength.requiredLength}} characters.
+            </div>
+            <div *ngIf="password?.errors?.maxlength">
+              password should be of maximum {{password?.errors?.maxlength.requiredLength}} characters.
+            </div>
+          </div>
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
