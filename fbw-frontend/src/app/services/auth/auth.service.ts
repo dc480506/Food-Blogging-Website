@@ -15,8 +15,8 @@ export class AuthService extends CommonService {
   constructor(private http: HttpClient) { 
     super();
   }
-  login(credentials:any){
-    return this.http.post(this.url+'login',credentials,{observe: 'response'})
+  login(credentials:any,type:any){
+    return this.http.post(this.url+type,credentials,{observe: 'response'})
     .pipe(map(response=> {
 
       let data=JSON.parse(JSON.stringify(response)).body;

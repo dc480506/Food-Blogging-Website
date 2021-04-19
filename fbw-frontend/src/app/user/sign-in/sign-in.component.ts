@@ -13,8 +13,8 @@ export class SignInComponent{
   invalidLogin=false;
   log(x:any){ console.log(x);}
 
-  submit(credentials:Object){ 
-    this.service.login(credentials)
+  login(credentials:Object){ 
+    this.service.login(credentials,'login')
     .subscribe(resp=>{
       if(resp){
         console.log("Yo");
