@@ -62,17 +62,18 @@ export class SignUpComponent extends Toastr{
     //   });
     //   console.log(this.form);
 
-      const formData = new FormData();
-      // console.log("Type is: ",this.form.value)
-      var obj=this.form.value
-      for ( var key in this.form.value ) {
-        formData.append(key, obj[key]);
-    }
-    console.log("Form data is: ",formData,typeof(formData))
+    //   const formData = new FormData();
+    //   // console.log("Type is: ",this.form.value)
+    //   var obj=this.form.value
+    //   for ( var key in this.form.value ) {
+    //     formData.append(key, obj[key]);
+    // }
+    // console.log("Form data is: ",formData,typeof(formData))
 
-      this.service.login(formData,'register')
+      this.service.login(this.form.value,'register')
       .subscribe(
-        (response)=>{console.log(response); this.showSuccess("Your account has been created successfully","Account Created")}
+        (response)=>{console.log(response); this.showSuccess("Your account has been created successfully","Account Created");
+      }
       )
    }
   
