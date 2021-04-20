@@ -6,12 +6,12 @@
     
     <div class="collapse navbar-collapse navbar-nav">
         <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home">Home</a>
-        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/newblog">+New Blog</a>
-        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/myblogs">My Blogs</a>
-        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/restaurants">Restaurants</a>
+        <a class="nav-item nav-link" *appIsAuthorized routerLinkActive="active" routerLink="/newblog">+New Blog</a>
+        <a class="nav-item nav-link" *appIsAuthorized routerLinkActive="active" routerLink="/myblogs">My Blogs</a>
+        <a class="nav-item nav-link" *appIsAuthorized routerLinkActive="active" routerLink="/restaurants">Restaurants</a>
     </div>
-
-    <h6 class="black-text">Welcome, {{currentUser}} </h6>
-    <button class="btn btn-dark ml-3" id="lgbtn" (click)="logout()">Logout</button>
+    <h6  *appIsAuthorized class="black-text">Welcome, {{currentUser}} </h6>
+    <button  *appIsAuthorized class="btn btn-dark ml-3" id="lgbtn" (click)="logout()">Logout</button>
+    <button *ngIf="!loggedIn" class="btn btn-dark ml-3" id="signinbtn" (click)="signIn()">Sign In</button>
 </nav>
 <router-outlet></router-outlet>

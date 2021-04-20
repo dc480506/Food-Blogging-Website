@@ -27,13 +27,14 @@ const routes: Routes = [
     component: SignUpComponent, 
     canActivate:[RedirectHome] }],
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { 
   path: 'home', 
   component: AppNavigationComponent, 
   children: [{ path: '', 
     component: HomeComponent, 
-    canActivate:[AuthGuard] }],
+    // canActivate:[AuthGuard]
+   }],
   },
   { 
     path: 'myblogs', 

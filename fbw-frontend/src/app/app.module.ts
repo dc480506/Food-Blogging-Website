@@ -29,6 +29,7 @@ import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/update-blog/update-blog.component';
 import { ToastrModule } from 'ngx-toastr';
+import { IsAuthorizedDirective } from './custom-directives/is-authorized.directive';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -50,6 +51,7 @@ export function tokenGetter() {
     TitleCaseDirective,
     BlogComponent,
     UpdateBlogComponent,
+    IsAuthorizedDirective,
 // ToastrModule added
   ],
   imports: [

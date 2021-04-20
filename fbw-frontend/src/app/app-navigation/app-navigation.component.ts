@@ -16,8 +16,14 @@ export class AppNavigationComponent implements OnInit {
     return this.authService.currentUser;
   }
 
+  get loggedIn(){
+    return this.authService.isLoggedin();
+  }
+  signIn(){
+    this.router.navigate(['/login']);
+  }
   logout(){
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }
