@@ -34,6 +34,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReadLessMorePipe } from './custom-pipe/read-less-more.pipe';
 import { RestaurantComponent } from './app-navigation/restaurant/restaurant.component';
 import { ViewBlogComponent } from './app-navigation/home/view-blog/view-blog.component';
+import { LazyLoadDirective } from './custom-directives/lazy-load.directive';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -59,6 +60,7 @@ export function tokenGetter() {
     ReadLessMorePipe,
     RestaurantComponent,
     ViewBlogComponent,
+    LazyLoadDirective,
 // ToastrModule added
   ],
   imports: [

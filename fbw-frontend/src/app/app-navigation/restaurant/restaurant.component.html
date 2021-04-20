@@ -33,7 +33,8 @@
         <div class="card mb-3">
           <img
             class="card-img-top"
-            src="{{restaurant.restaurant.featured_image}}"
+            appLazyLoad
+            [src]="restaurant.restaurant.featured_image"
             onerror="this.src='/assets/img/image-not-found.jpg'"
             alt="Featured image from {{restaurant.restaurant.name}}" height="200px"
           />
