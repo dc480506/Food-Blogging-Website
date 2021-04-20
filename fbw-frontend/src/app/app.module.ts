@@ -31,6 +31,9 @@ import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/updat
 import { ToastrModule } from 'ngx-toastr';
 import { IsAuthorizedDirective } from './custom-directives/is-authorized.directive';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ReadLessMorePipe } from './custom-pipe/read-less-more.pipe';
+import { RestaurantComponent } from './app-navigation/restaurant/restaurant.component';
+import { ViewBlogComponent } from './app-navigation/home/view-blog/view-blog.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -53,6 +56,9 @@ export function tokenGetter() {
     BlogComponent,
     UpdateBlogComponent,
     IsAuthorizedDirective,
+    ReadLessMorePipe,
+    RestaurantComponent,
+    ViewBlogComponent,
 // ToastrModule added
   ],
   imports: [

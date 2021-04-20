@@ -1,29 +1,23 @@
-<div class="container mx-1">
+<div class="container d-flex align-content-center flex-wrap">
   <div class="row">
     <div
-      class="widget_wrap col-md-4"
+      class="col-md-4"
       style="width: 320px; height: 797px; display: inline-block"
     >
       <iframe
         src="https://www.zomato.com/widgets/res_search_widget.php?city_id=3&theme=red&hideCitySearch=on&hideResSearch=on&sort=popularity"
-        style="overflow-y: auto; 
-        height: 85vh;
-        margin: auto;
-        bottom: 0;
-        right: 0;"
+        style="
+          overflow-y: auto;
+          height: 85vh;
+          margin: auto;
+          bottom: 0;
+          right: 0;
+        "
         border="0"
         frameborder="0"
       ></iframe>
     </div>
-    <div class="col-md-8 d-flex align-items-stretch container blog-results"
-        style="height: 85vh; margin-top: 0; width: 85%;"
-        infiniteScroll
-        [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="50"
-        (scrolled)="onScroll()"
-        [scrollWindow]="false"
-    >
-    
+    <div class="col-md-8 p-0 m-0">
       <!-- <div
         class="container blog-results"
         infiniteScroll
@@ -32,21 +26,36 @@
         (scrolled)="onScroll()"
         [scrollWindow]="false"
       > -->
-        <div class="row">
-            <div class="container mt-1">
-                <div class="jumbotron py-2" style="background-color:#353b48">
-                    <div class="row">
-                        <div class="input-group col-12">
-                            <input type="text" class="form-control" ng-model="query" ng-model-options="{ debounce: 800 }" ng-change="fetchRestaurants()" aria-label="Text input with dropdown button">
-                            <span class="input-group-append bg-primary">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="bi bi-search" style="color:white"></i>                        
-                                </button>
-                              </span>
-                        </div>
-                    </div>
-                </div>
+      <div class="container mt-1">
+        <div class="jumbotron py-2" style="background-color: #353b48">
+          <div class="row">
+            <div class="input-group col-12">
+              <input
+                type="text"
+                class="form-control"
+                ng-model="query"
+                ng-model-options="{ debounce: 800 }"
+                ng-change="fetchRestaurants()"
+                aria-label="Text input with dropdown button"
+              />
+              <span class="input-group-append bg-primary">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="bi bi-search" style="color: white"></i>
+                </button>
+              </span>
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container blog-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false"
+      >
+        <div class="row">
           <div
             class="col-md-6 d-flex align-items-stretch"
             *ngFor="let blog of data"
@@ -92,7 +101,15 @@
             </div>
           </div>
         </div>
+      </div>
       <!-- </div> -->
     </div>
   </div>
 </div>
+
+<!-- style="height: 85vh; margin-top: 0; width: 85%;"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()"
+[scrollWindow]="false" -->

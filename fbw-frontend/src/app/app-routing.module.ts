@@ -11,6 +11,8 @@ import { HomeComponent } from './app-navigation/home/home.component';
 import { MyBlogsComponent } from './app-navigation/my-blogs/my-blogs.component';
 import { BlogComponent } from './app-navigation/my-blogs/blog/blog/blog.component';
 import { UpdateBlogComponent } from './app-navigation/my-blogs/update-blog/update-blog/update-blog.component';
+import { ViewBlogComponent } from './app-navigation/home/view-blog/view-blog.component';
+import { RestaurantComponent } from './app-navigation/restaurant/restaurant.component';
 
 const routes: Routes = [
   {
@@ -67,10 +69,19 @@ const routes: Routes = [
     path: 'view-blogs', 
     component: AppNavigationComponent, 
     children: [{ path: 'blog/:id', 
-      component: BlogComponent, 
+      component: ViewBlogComponent, 
       }
     ],
   },
+
+  { 
+    path: 'restaurants', 
+    component: AppNavigationComponent, 
+    children: [{ path: '', 
+      component: RestaurantComponent, 
+      }
+    ],
+  }
 ];
 
 @NgModule({
