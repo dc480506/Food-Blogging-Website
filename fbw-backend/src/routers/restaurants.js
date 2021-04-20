@@ -62,7 +62,7 @@ router.post('/fetch-restaurants',(req,res)=>{
     })
     .then(result => result.json())
     .then(data => {
-        res.json({ "restaurants":nearby?data.nearby_restaurants:data.restaurants });
+        res.json(nearby?data.nearby_restaurants:data.restaurants);
     })
     .catch(err => {
         res.send(err);

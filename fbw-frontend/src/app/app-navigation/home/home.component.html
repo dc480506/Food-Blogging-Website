@@ -1,8 +1,11 @@
-<div class="container d-flex align-content-center flex-wrap">
+<div class="container mx-1">
   <div class="row">
     <div
       class="col-md-4"
-      style="width: 320px; height: 797px; display: inline-block"
+      style="height: 797px; 
+      width: 29.1666666%;
+    flex: 0 0 29.166%;max-width: 29.1666666%;
+      display: inline-block"
     >
       <iframe
         src="https://www.zomato.com/widgets/res_search_widget.php?city_id=3&theme=red&hideCitySearch=on&hideResSearch=on&sort=popularity"
@@ -17,7 +20,8 @@
         frameborder="0"
       ></iframe>
     </div>
-    <div class="col-md-8 p-0 m-0">
+    <div class="col-md-8 p-0 m-0" style="width: 70.8333333%;
+    flex: 0 0 70.833%;max-width: 70.8333333%;">
       <!-- <div
         class="container blog-results"
         infiniteScroll
@@ -33,10 +37,6 @@
               <input
                 type="text"
                 class="form-control"
-                ng-model="query"
-                ng-model-options="{ debounce: 800 }"
-                ng-change="fetchRestaurants()"
-                aria-label="Text input with dropdown button"
               />
               <span class="input-group-append bg-primary">
                 <button class="btn btn-outline-secondary" type="button">
