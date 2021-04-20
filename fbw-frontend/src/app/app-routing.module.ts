@@ -63,6 +63,14 @@ const routes: Routes = [
       canActivate:[AuthGuard] }
     ],
   },
+  { 
+    path: 'view-blogs', 
+    component: AppNavigationComponent, 
+    children: [{ path: 'blog/:id', 
+      component: BlogComponent, 
+      }
+    ],
+  },
 ];
 
 @NgModule({

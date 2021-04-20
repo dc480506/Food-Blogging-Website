@@ -6,6 +6,7 @@ const googleSignIn=require('./routers/googleSignIn');
 const rssFeed= require('./routers/rssFeed');
 const user= require('./routers/user');
 const userBlog= require('./routers/userBlog');
+const blogs= require('./routers/blogs');
 const cors= require('./middleware/cors');
 const bodyParser = require('body-parser');
 
@@ -49,8 +50,11 @@ app.use(express.json());
 // For User Model
 app.use('/api/user',user);
 
-// For Blog Model
+// For User Blog Model
 app.use('/api/myblogs',userBlog);
+
+// For Blog
+app.use('/api/blogs',blogs);
 
 // For Restaurants details
 app.use('/api/restaurants',restaurants);

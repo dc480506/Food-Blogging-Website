@@ -64,7 +64,7 @@
     (scrolled)="onScroll()"
     [scrollWindow]="false">
         <div class="row">
-            <div class="col-md-6 d-flex align-items-stretch" *ngFor="let blog of blogs">
+            <div class="col-md-6 d-flex align-items-stretch" *ngFor="let blog of data">
                 <div class="card mb-3">
                     <img height="200px" class="card-img-top" src="{{blogImageBaseURL + blog.image_url}}" alt="Card image cap">
                     <div class="card-body">
@@ -95,6 +95,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-md-12 p-5">
+            <ngx-spinner
+            bdOpacity = 0.9
+            bdColor = ""
+            size = "default"
+            color = "#581f87"
+            type = "ball-pulse-sync"
+            [fullScreen] = "false"
+            >
+            </ngx-spinner>
+          </div>
         </div>
     </div>
 <!-- </div> -->
