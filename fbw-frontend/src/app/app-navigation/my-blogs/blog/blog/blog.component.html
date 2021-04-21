@@ -42,7 +42,11 @@
               <p class="card-text">{{ blog.summary }}</p>
               <h5>Description :</h5>
               <div class="overflowTest">
-                {{ blog.description }}
+                <span *ngIf="isReadMore">{{ blog.description | readLessMore:10}}</span>
+                <span *ngIf="!isReadMore">{{ blog.description}}</span>
+                &nbsp;<button type="button" class="btn btn-link" (click)="showText()">
+                  {{ isReadMore ? 'Read More': 'Read Less' }}
+                </button>              
               </div>
             </div>
             <div class="card-footer">

@@ -59,4 +59,10 @@ export class BlogComponent implements OnInit {
     });
   }
 
+  isReadMore = true
+
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+
 }

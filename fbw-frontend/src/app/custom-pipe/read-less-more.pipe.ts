@@ -5,8 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ReadLessMorePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: string, limit?:number){
+    if(!value)  return null;
+
+    let actualLimit= (limit)?limit:30;
+    return value.substr(0,actualLimit)+' ...';
+
   }
 
 }

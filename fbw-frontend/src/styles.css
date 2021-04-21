@@ -8,9 +8,9 @@ body{
     background-image: url('/assets/img/foodBackground.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width:100%;
+    /* width:100%;
     overflow-x:hidden;
-    overflow-y:hidden;
+    overflow-y:hidden; */
 }
 
 .blog-date {
