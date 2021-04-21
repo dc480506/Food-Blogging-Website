@@ -31,19 +31,10 @@ export class LocationService extends CommonService{
   }
 
  getLocationDetails(){
-
-    // let pos= await this.getPosition()
-    // return this.http.get(this.baseURL+`restaurants/location?lon=${pos.lon}&lat=${pos.lat}`)
-    //     .pipe(
-    //       map(response=>JSON.parse(JSON.stringify(response))),
-    //       catchError(this.handleError)
-    //     )
-
     return from(this.getPosition()).pipe(mergeMap(pos => {
       return this.http.get(this.baseURL+`restaurants/location?lon=${pos.lon}&lat=${pos.lat}`)
       .pipe(
         map(
-          // response=>_.pick(JSON.parse(JSON.stringify(response)),['city_name','title'])
           response=>JSON.parse(JSON.stringify(response))
         ),
         catchError(this.handleError)
