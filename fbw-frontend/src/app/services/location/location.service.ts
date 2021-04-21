@@ -3,9 +3,7 @@ import { CommonService } from './../common/common.service';
 import { Injectable } from '@angular/core';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { from } from 'rxjs';
-import 'lodash';
 
-declare var _:any;
 @Injectable({
   providedIn: 'root'
 })

@@ -78,7 +78,7 @@
                   [routerLink]="['/view-blogs/blog', blog._id]"
                   class="blog-title"
                 >
-                  {{ blog.title }}
+                  {{ blog.title | titleCase | readLessMore: 15 }}
                 </a>
                 <div class="blog-summary">
                   <p>{{ blog.summary }}</p>

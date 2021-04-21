@@ -52,7 +52,7 @@ export function tokenGetter() {
     HomeComponent,
     MyBlogsComponent,
     CreateBlogComponent,
-    // TitleCasePipe,
+    TitleCasePipe,
     TitleCaseDirective,
     BlogComponent,
     UpdateBlogComponent,

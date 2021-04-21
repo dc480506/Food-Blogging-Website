@@ -9,6 +9,8 @@ export class ReadLessMorePipe implements PipeTransform {
     if(!value)  return null;
 
     let actualLimit= (limit)?limit:30;
+    if(value.length<actualLimit)
+      return value
     return value.substr(0,actualLimit)+' ...';
 
   }
