@@ -69,4 +69,18 @@ router.post('/fetch-restaurants',(req,res)=>{
     });
 })
 
+router.get('/location',(req,res)=>{
+    let url=`${zomato_URL}/geocode?lon=${req.query.lon}&lat=${req.query.lat}`
+    fetch(url,{
+        mode: "cors",
+        headers:{
+            'user-key': zomato_key
+          }
+    })
+    .then(result => result.json())
+    .then(data => {
+        res.json(data.location);
+    })
+})
+
 module.exports=router;

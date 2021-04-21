@@ -12,7 +12,7 @@ export class RestaurantService extends CommonService{
     super();
    }
    loadRestaurantData(data:any){
-     return this.http.post(this.baseURL+"api/restaurants/fetch-restaurants",data)
+     return this.http.post(this.baseURL+"restaurants/fetch-restaurants",data)
               .pipe(
                 map(response=>JSON.parse(JSON.stringify(response))),
                 catchError(this.handleError)

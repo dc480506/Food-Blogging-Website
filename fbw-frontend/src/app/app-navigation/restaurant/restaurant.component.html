@@ -5,6 +5,7 @@
           <input
             type="text"
             class="form-control"
+            [(ngModel)]="search"
           />
           <span class="input-group-append bg-primary">
             <button class="btn btn-outline-secondary" type="button">
@@ -16,7 +17,8 @@
     </div>
 </div>
 <div class="container">
-    <p class="mt-4 mx-4"><b>info :</b></p>
+    <p *ngIf="search==''" class="mt-4 mx-4"><b>Showing Restaurants near {{subZone}}</b></p>
+    <p *ngIf="search!=''" class="mt-4 mx-4"><b>You searched for: "{{search}}"</b></p>
 </div>
 <div class="container  list-results" style="height:65vh;">
     <div class="row">

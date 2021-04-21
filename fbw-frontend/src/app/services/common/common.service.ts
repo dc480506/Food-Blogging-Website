@@ -9,7 +9,7 @@ import { NotFoundError } from 'src/app/errors/not-found-error';
   providedIn: 'root'
 })
 export class CommonService {
-  baseURL="http://localhost:3000/"
+  baseURL="http://localhost:3000/api/"
   headers = new HttpHeaders().set('Content-Type','application/json');
 
   constructor() { }

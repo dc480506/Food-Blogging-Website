@@ -12,21 +12,23 @@ import { RestaurantService } from 'src/app/services/restaurant/restaurant.servic
 })
 export class RestaurantComponent implements OnInit {
   data:any[]=[];
-  info="";
+  search="";
   lon=null;
   lat=null;
+  subZone="";
   constructor(private service:RestaurantService,private spinner:NgxSpinnerService,private locationService:LocationService) {
     
   }
 
   ngOnInit(): void {
-    this.locationService.getPosition().then(
-      pos=>{
-        this.lon=pos.lon;
-        this.lat=pos.lat;
-        this.loadRestaurants();
-      }
-    )
+    this.locationService.getLocationDetails()
+    .subscribe(location=>{
+      this.lon=location.longitude;
+      this.lat=location.latitude;
+      this.subZone=location.title+", "+location.city_name;
+      this.loadRestaurants();
+      console.log(location);
+    })
   }
 
   loadRestaurants(){

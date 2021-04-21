@@ -11,7 +11,7 @@ const jwthelper = new JwtHelperService();
   providedIn: 'root'
 })
 export class AuthService extends CommonService {
-  url=this.baseURL+'api/user/';
+  url=this.baseURL+'user/';
   constructor(private http: HttpClient) { 
     super();
   }

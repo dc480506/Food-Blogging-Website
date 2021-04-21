@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
+    "lodash": "^4.17.21",
     "ngx-bootstrap": "^6.2.0",
     "ngx-bootstrap-confirm": "^4.0.3",
     "ngx-infinite-scroll": "^10.0.1",
