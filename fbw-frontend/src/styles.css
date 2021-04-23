@@ -45,11 +45,15 @@ body{
     font-size: 14px!important;
 }
 .blog-results,.list-results{
-    overflow-y: auto; 
+    overflow: hidden; 
     height: 70vh;
     margin: auto;
     bottom: 0;
     right: 0;
+}
+
+.blog-results:hover, .list-results:hover{
+    overflow-y: auto;
 }
 
 div.overflowTest {

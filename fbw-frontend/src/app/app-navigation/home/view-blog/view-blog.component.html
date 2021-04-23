@@ -1,1 +1,60 @@
-<p>view-blog works!</p>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<div class="container p-0 ml-5">
+    <div class="row">
+        <div class="col-md-2 middle-align">
+            <div class="card shadow h-100">
+                <div class="card-body text-font-family">
+                    Yo
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 m-0 col-height">
+            <div class="card shadow text-font">
+                <div class="card-body">
+                    <h1 class="text-font" id="title"> {{blog.title | titleCase}} </h1>
+                    <h6 class="card-subtitle mb-2 text-muted" id="subtitle">
+                       {{blog.subtitle}} 
+                    </h6>
+                    <br>
+                    <p class="text-left text-muted" style="font-size: small;">
+                      Published On: {{blog.publishInfo?.publishTime | date: "medium"}} | <b>{{blog.author.name}}</b>
+                    </p>
+                    <br>
+                    <p class="card-text"> 
+                        <strong>
+                            <i>
+                                <sup>
+                                <small>
+                                    <i class="fas fa-quote-left"></i>
+                                </small>
+                                </sup>
+                                    {{blog.summary}}
+                                <sup><small>
+                                    <i class="fas fa-quote-right"></i>
+                                </small></sup>
+                            </i></strong> 
+                    </p>
+                    <img
+                        height="350px"
+                        class="card-img-top"
+                        src="{{ blogImageBaseURL + blog.image_url }}"
+                        alt="Card image cap"
+                    />
+                    <br>
+                    <br>
+                    <div style="white-space: pre-line;">
+                        {{blog.description}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3 middle-align">
+            <div class="card shadow h-100">
+                <div class="card-body text-font-family">
+                    Yo
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

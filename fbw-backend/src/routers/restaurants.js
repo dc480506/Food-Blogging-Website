@@ -51,7 +51,8 @@ router.post('/fetch-restaurants',(req,res)=>{
     if(req.body.lon){
         url=`${zomato_URL}/geocode?lon=${req.body.lon}&lat=${req.body.lat}`;
     }else{
-        url=`${zomato_URL}/search?q=${req.body.q}&count=${req.body.count}`
+        let start= req.body.start?req.body.start:9;
+        url=`${zomato_URL}/search?q=${req.body.q}&count=${req.body.count}&start=${start}`
         nearby=false;
     }
     fetch(url,{

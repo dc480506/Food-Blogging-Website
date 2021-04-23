@@ -1,0 +1,16 @@
+.text-font{
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.middle-align{
+    vertical-align: middle;
+}
+
+.col-height{
+    height: 85vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.col-height:hover{
+    overflow-y: scroll;
+}
