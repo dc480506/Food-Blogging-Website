@@ -3,11 +3,21 @@
 }
 
 .middle-align{
-    vertical-align: middle;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+.author-font{
+    font-weight: 580;
+    color: rgba(41, 41, 41, 1);
+    font-size: 14px;
+    line-height: 16px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .col-height{
-    height: 85vh;
+    height: 78vh;
     margin: 0 auto;
     overflow: hidden;
 }

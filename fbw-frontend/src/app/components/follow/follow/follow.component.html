@@ -1,0 +1,11 @@
+<h3 class="follow-text">{{followersCount}} followers</h3>
+<button *appIsAuthorized
+  class="btn"
+  [class.btn-outline-success]="!isFollowing"
+  [class.btn-success]="isFollowing"
+  style="border: width 1px; border-radius: 99em"
+  (click)="onClick()"
+>
+  <span *ngIf="!isFollowing; else followingText"> Follow </span>
+  <ng-template #followingText> Following </ng-template>
+</button>

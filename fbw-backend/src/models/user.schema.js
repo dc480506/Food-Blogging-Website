@@ -19,6 +19,14 @@ var userSchema = new mongoose.Schema({
         // minlength: [8, 'Password must be atleast 8 characters'],
         // maxlength: [16, 'password must have 8-16 characters']
     },
+    followers:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    following:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
     // saltSecret: String
 });
 
