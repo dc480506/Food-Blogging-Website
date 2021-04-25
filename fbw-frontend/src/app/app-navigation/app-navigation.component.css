@@ -5,3 +5,38 @@
     font-weight: bold;
     border-bottom: 3px solid #e9a39c;
   }
+
+
+  .social-footer {
+    padding: 1rem;
+    background: #fefefe;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  
+  /* .social-footer .social-footer-icons li:last-of-type {
+    margin-left: 0;
+  } */
+  
+  .social-footer .social-footer-icons{
+    font-size: 1.3rem;
+    color: #fefefe;
+    margin-left: 0;
+  }
+  
+  #rssIcon{
+    color:#ee802f
+  }
+
+  #rssIcon:hover{
+    color:#df6711
+  }
+  
+  

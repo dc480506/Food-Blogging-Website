@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <a routerLink="/home" class="navbar-brand">
         <img src="assets/img/Logo.jpg" width="35" height="35" alt="">
-        AIT-FBW 
+        {{websiteName}}
     </a>
     
     <div class="collapse navbar-collapse navbar-nav">
@@ -15,3 +15,19 @@
     <button *ngIf="!loggedIn" class="btn btn-outline-success ml-3" id="signinbtn" (click)="signIn()">Sign In</button>
 </nav>
 <router-outlet></router-outlet>
+<footer class="social-footer">
+    <div class="social-footer-left">
+      <a style="text-decoration: none;" href="#"><img class="logo" width="30px" height="30px" src="/assets/img/Logo.jpg">        {{websiteName}}
+      </a>
+    </div>
+    <div style="font-size: 14px;">
+    Developed By <strong>Meet Bhanushali, Dev Chaurasia</strong> and <strong>Arvind Sridhar</strong>
+    </div>
+    <div class="social-footer-icons">
+      <ul class="menu simple">
+        <li><a target="_blank" rel="noopener noreferrer" id="rssIcon" href="http://localhost:3000/feeds/rss"><i class="bi bi-rss-fill"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+  
+  

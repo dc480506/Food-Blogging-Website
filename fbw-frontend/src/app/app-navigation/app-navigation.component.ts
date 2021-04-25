@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-navigation.component.css']
 })
 export class AppNavigationComponent implements OnInit {
+  websiteName="AIT-FBW"
   constructor(private authService:AuthService, private router:Router) { }
   ngOnInit(): void {
 

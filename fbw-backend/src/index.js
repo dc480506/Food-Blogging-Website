@@ -8,6 +8,7 @@ const user= require('./routers/user');
 const userBlog= require('./routers/userBlog');
 const blogs= require('./routers/blogs');
 const follow= require('./routers/follow');
+const blogRSSFeed=require('./routers/blog-rss-feed');
 const cors= require('./middleware/cors');
 const bodyParser = require('body-parser');
 
@@ -66,6 +67,9 @@ app.use('/api/restaurants',restaurants);
 
 // For RSS feeds
 app.use('/api/feeds',rssFeed);
+
+//For Blogs RSS feeds
+app.use('/feeds/rss',blogRSSFeed);
 
 app.get('/',function(req,res,next){
     console.log("Middleware called at route '/': ");
