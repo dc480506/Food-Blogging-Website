@@ -1,0 +1,24 @@
+<span class="likesPreview ml-3">
+    <i class="bi" 
+    [class.bi-hand-thumbs-up-fill]="isLikeActive" 
+    [class.bi-hand-thumbs-up]="!isLikeActive" 
+    (click)="onLikeClick()"
+    *ngIf="isLoggedin; else staticLike"
+    ></i>
+    <ng-template #staticLike>
+        <i class="bi bi-hand-thumbs-up"></i>
+    </ng-template>
+    <span> {{likesCount}}</span>
+</span>
+<span class="dislikesPreview ml-3">
+    <i class="bi"
+    [class.bi-hand-thumbs-down-fill]="isDisLikeActive" 
+    [class.bi-hand-thumbs-down]="!isDisLikeActive" 
+    (click)="onDisLikeClick()"
+    *ngIf="isLoggedin; else staticDisLike"
+    ></i>
+    <ng-template #staticDisLike>
+        <i class="bi bi-hand-thumbs-down"></i>
+    </ng-template>
+    <span> {{disLikesCount}}</span>
+</span>

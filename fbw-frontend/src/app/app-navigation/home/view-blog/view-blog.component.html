@@ -11,14 +11,21 @@
                                 <app-follow [followersCount]="follow.followersCount" [isFollowing]="follow.following" (change)="onFollowClick($event)"></app-follow>
                                 <hr>
                                 <div class="row">
-                                    <div class="likesPreview ml-3">
+                                    <!-- <div class="likesPreview ml-3">
                                         <i class="bi bi-hand-thumbs-up-fill"></i>
                                         <span> {{blog.likedBy?.length}}</span>
                                     </div>
                                     <div class="dislikesPreview ml-3">
                                         <i class="bi bi-hand-thumbs-down-fill"></i>
                                         <span> {{blog.dislikedBy?.length}}</span>
-                                    </div>
+                                    </div> -->
+                                    <app-like-dislike
+                                    [isLikeActive]="likeDislike.liked"
+                                    [likesCount]="likeDislike.likesCount"
+                                    [isDisLikeActive]="likeDislike.disliked"
+                                    [disLikesCount]="likeDislike.disLikesCount"
+                                    (change)="onLikeDislikeClick($event)"
+                                    ></app-like-dislike>
                                     <div class="commentsPreview ml-3">
                                         <i class="bi bi-chat-fill"></i>  
                                         <span> {{blog.comments?.length}}</span>                          

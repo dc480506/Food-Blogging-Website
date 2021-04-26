@@ -58,7 +58,7 @@ router.get('/like-dislike/:_id',async (req,res)=>{
         }
     }
     responseObj['likesCount']=blog.likedBy.length;
-    responseObj['dislikesCount']=blog.dislikedBy.length;
+    responseObj['disLikesCount']=blog.dislikedBy.length;
     res.send(responseObj);
 })
 
