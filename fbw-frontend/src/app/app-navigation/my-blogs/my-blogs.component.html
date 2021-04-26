@@ -71,7 +71,9 @@
                     <div class="card-body">
                         <div class="blog-date">
                             <b>{{ blog.author.name}}</b>
-                            <span> | {{blog.publishInfo?.publishTime | date:"medium"}}</span>
+                            | <span *ngIf="blog.publishInfo.isPublish; else unPublishText">  {{blog.publishInfo?.publishTime | date:"medium"}}</span>
+                            <ng-template #unPublishText><span style="color: red;"> Unpublished </span> </ng-template>
+
                         </div>
                         <a [routerLink]="['/myblogs/blog',blog._id]" class="blog-title">
                             {{blog.title | titleCase}}

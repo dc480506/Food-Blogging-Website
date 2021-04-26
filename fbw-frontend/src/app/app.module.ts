@@ -35,7 +35,8 @@ import { ReadLessMorePipe } from './custom-pipe/read-less-more.pipe';
 import { RestaurantComponent } from './app-navigation/restaurant/restaurant.component';
 import { ViewBlogComponent } from './app-navigation/home/view-blog/view-blog.component';
 import { LazyLoadDirective } from './custom-directives/lazy-load.directive';
-import { FollowComponent } from './components/follow/follow/follow.component';
+import { FollowComponent } from './components/follow/follow.component';
+import { PublishComponent } from './components/publish/publish.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -63,6 +64,7 @@ export function tokenGetter() {
     ViewBlogComponent,
     LazyLoadDirective,
     FollowComponent,
+    PublishComponent,
 // ToastrModule added
   ],
   imports: [

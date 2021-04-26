@@ -1,0 +1,6 @@
+<label class="switch">
+    <input type="checkbox" [checked]="isPublished"  (click)=onClick()>
+    <span class="slider round" ></span>
+</label>
+<span *ngIf="isPublished; else unPublishText"> <small> Published on {{publishTime | date:"medium"}}</small> </span>
+<ng-template #unPublishText><small> Publish Now</small>  </ng-template>

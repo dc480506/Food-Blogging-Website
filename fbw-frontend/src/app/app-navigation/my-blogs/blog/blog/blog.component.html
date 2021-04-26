@@ -34,9 +34,10 @@
                 {{ blog.subtitle }}
               </h6>
               <p class="text-right text-muted">- {{ blog.author.name }}</p>
-              <p class="text-left text-muted">
+              <blog-publish [isPublished]="blog.publishInfo?.isPublish" [publishTime]="blog.publishInfo?.publishTime" (change)="onPublishToggle($event)"></blog-publish>
+              <!-- <p class="text-left text-muted">
                 {{ blog.publishInfo?.publishTime | date: "medium" }}
-              </p>
+              </p> -->
               <br />
               <h5>Summary :</h5>
               <p class="card-text">{{ blog.summary }}</p>

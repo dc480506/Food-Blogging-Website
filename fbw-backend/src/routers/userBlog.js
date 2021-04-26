@@ -92,6 +92,36 @@ router.delete('/:_id',async (req,res)=>{
     res.send(result);
 })
 
+router.post('/publish',async (req,res)=>{
+    let blog= await Blog.findOne({_id:req.body.id});
+    if(!blog) return res.status(404).send("Blog Not Found");
+    if(blog.publishInfo.isPublish){
+        return res.status(400).send("Blog already published");
+    }
+    const result=await Blog.findByIdAndUpdate(
+        req.body.id,
+        {
+           publishInfo:{isPublish:true, publishTime:Date.now()} 
+        },
+        {new:true}
+    );
+    res.send(result);
+})
+
+router.delete('/publish/:id',async (req,res)=>{
+    let blog= await Blog.findOne({_id:req.params.id});
+    if(!blog) return res.status(404).send("Blog Not Found");
+    const result=await Blog.findByIdAndUpdate(
+        req.params.id,
+        {
+           publishInfo:{isPublish:false} 
+        },
+        {new:true}
+    );
+    res.send(result);
+})
+
+
 function validateBlogQuery(query) {
     const schema = Joi.object({
         page: Joi.number().min(1).required(),
