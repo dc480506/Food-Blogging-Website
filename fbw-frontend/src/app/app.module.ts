@@ -37,6 +37,7 @@ import { ViewBlogComponent } from './app-navigation/home/view-blog/view-blog.com
 import { LazyLoadDirective } from './custom-directives/lazy-load.directive';
 import { FollowComponent } from './components/follow/follow.component';
 import { PublishComponent } from './components/publish/publish.component';
+import { LikeComponent } from './components/like/like.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -65,6 +66,7 @@ export function tokenGetter() {
     LazyLoadDirective,
     FollowComponent,
     PublishComponent,
+    LikeComponent,
 // ToastrModule added
   ],
   imports: [
