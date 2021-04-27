@@ -11,7 +11,7 @@
         >
             <div *ngFor="let author of data">
                 <h2  style="font-size: 14px;">{{author.name}}</h2>
-                <app-follow [followersCount]="author.followersCount" [isFollowing]="false" ></app-follow>
+                <app-follow [followersCount]="author.followersCount" [isFollowing]="false" [authorId]="author._id"></app-follow>
                 <hr>
             </div>
         </div>
