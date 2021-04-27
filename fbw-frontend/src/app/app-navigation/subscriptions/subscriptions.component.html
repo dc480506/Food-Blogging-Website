@@ -42,7 +42,7 @@
                                         | <span >  {{blog.publishInfo?.publishTime | date:"medium"}}</span>
     
                                     </div>
-                                    <a [routerLink]="['/myblogs/blog',blog._id]" class="blog-title">
+                                    <a [routerLink]="['/view-blogs/blog',blog._id]" class="blog-title">
                                         {{blog.title | titleCase}}
                                     </a>
                                     <div class="blog-summary">
