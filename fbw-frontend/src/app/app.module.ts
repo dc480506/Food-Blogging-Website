@@ -1,3 +1,4 @@
+import { DataService } from './services/data.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 import { CustomInterceptor } from './custom-interceptor.module';
@@ -39,6 +40,8 @@ import { FollowComponent } from './components/follow/follow.component';
 import { PublishComponent } from './components/publish/publish.component';
 import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
 import { SubscriptionsComponent } from './app-navigation/subscriptions/subscriptions.component';
+import { FollowingAuthorsComponent } from './components/following-authors/following-authors.component';
+import { NotFollowingAuthorsComponent } from './components/not-following-authors/not-following-authors.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -69,6 +72,8 @@ export function tokenGetter() {
     PublishComponent,
     LikeDislikeComponent,
     SubscriptionsComponent,
+    FollowingAuthorsComponent,
+    NotFollowingAuthorsComponent,
 // ToastrModule added
   ],
   imports: [

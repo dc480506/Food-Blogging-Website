@@ -54,6 +54,34 @@ router.delete('/:_id',checkAuthorization,async (req,res)=>{
     res.send({currentUser:res2, author:res1});
 })
 
+router.get('/authorFollowing',checkAuthorization, async (req,res)=>{
+    let user= await User.findById(req.user._id);
+    const page=parseInt(req.query.page);
+    const limit=parseInt(req.query.limit);
+    const authors= await User.aggregate([
+        {$match: {_id:{$in:user.following}}},
+        {$sort:{"followers":-1}},
+        { $project: { name: 1, email: 1, followersCount:{$size:'$followers'} } },
+        { $skip: (page-1)*limit },
+        {$limit:limit}
+      ]);   
+    res.send(authors);
+})
+
+router.get('/authorNotFollowing',checkAuthorization, async (req,res)=>{
+    let user= await User.findById(req.user._id);
+    const page=parseInt(req.query.page);
+    const limit=parseInt(req.query.limit);
+    const authors= await User.aggregate([
+        {$match: {$and:[{_id:{$nin:user.following}},{_id:{$ne:user._id}}]}},
+        {$sort:{"followers":-1}},
+        { $project: { name: 1, email: 1, followersCount:{$size:'$followers'} } },
+        { $skip: (page-1)*limit },
+        {$limit:limit}
+      ]);   
+    res.send(authors);
+})
+
 router.get('/:_id',async (req,res)=>{
     let author= await User.findOne({_id:req.params._id});
     // console.log(author);
@@ -74,5 +102,6 @@ router.get('/:_id',async (req,res)=>{
     // console.log(responseObj)
     res.send(responseObj)
 })
+
 
 module.exports=router;

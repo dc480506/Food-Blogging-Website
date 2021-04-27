@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body justify-content-center">
+        <h6>Other Authors:</h6>
+        <hr>
+        <div class="box"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false"
+        >
+            <div *ngFor="let author of data">
+                <h2  style="font-size: 14px;">{{author.name}}</h2>
+                <app-follow [followersCount]="author.followersCount" [isFollowing]="false" ></app-follow>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

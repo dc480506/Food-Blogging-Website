@@ -6,6 +6,6 @@
   style="border: width 1px; border-radius: 99em"
   (click)="onClick()"
 >
-  <span *ngIf="!isFollowing; else followingText"> Follow </span>
-  <ng-template #followingText> Following </ng-template>
+  <span class="status-text" *ngIf="!isFollowing; else followingText"> Follow </span>
+  <ng-template #followingText> <span class="status-text"> Following </span></ng-template>
 </button>

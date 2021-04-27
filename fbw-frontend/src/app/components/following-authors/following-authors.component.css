@@ -1,0 +1,7 @@
+.box{
+    height:23vh;
+    overflow:hidden;
+}
+.box:hover{
+    overflow: auto;
+}
