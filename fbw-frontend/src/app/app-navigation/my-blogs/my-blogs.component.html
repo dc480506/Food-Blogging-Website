@@ -84,16 +84,16 @@
                         <div class="row">
                             <div class="likesPreview ml-4">
                                 <i class="bi bi-hand-thumbs-up-fill"></i>
-                                <span> {{blog.likedBy.length}}</span>
+                                <span> {{blog.likedBy.length | countMetric}}</span>
                             </div>
                             <div class="dislikesPreview ml-4">
                                 <i class="bi bi-hand-thumbs-down-fill"></i>
-                                <span> {{blog.dislikedBy.length}}</span>
+                                <span> {{blog.dislikedBy.length | countMetric}}</span>
                             </div>
-                            <div class="commentsPreview ml-4">
+                            <!-- <div class="commentsPreview ml-4">
                                 <i class="bi bi-chat-fill"></i>  
                                 <span> {{blog.comments.length}}</span>                          
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

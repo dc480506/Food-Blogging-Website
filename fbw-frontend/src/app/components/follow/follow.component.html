@@ -1,4 +1,4 @@
-<h3 class="follow-text">{{followersCount}} followers</h3>
+<h3 class="follow-text">{{followersCount | countMetric}} followers</h3>
 <button *appIsAuthorized
   class="btn"
   [class.btn-outline-success]="!isFollowing"

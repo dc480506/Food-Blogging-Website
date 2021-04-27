@@ -8,7 +8,7 @@
     <ng-template #staticLike>
         <i class="bi bi-hand-thumbs-up"></i>
     </ng-template>
-    <span> {{likesCount}}</span>
+    <span> {{likesCount | countMetric}}</span>
 </span>
 <span class="dislikesPreview ml-3">
     <i class="bi"
@@ -20,5 +20,5 @@
     <ng-template #staticDisLike>
         <i class="bi bi-hand-thumbs-down"></i>
     </ng-template>
-    <span> {{disLikesCount}}</span>
+    <span> {{disLikesCount | countMetric}}</span>
 </span>

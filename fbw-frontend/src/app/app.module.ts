@@ -42,6 +42,7 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 import { SubscriptionsComponent } from './app-navigation/subscriptions/subscriptions.component';
 import { FollowingAuthorsComponent } from './components/following-authors/following-authors.component';
 import { NotFollowingAuthorsComponent } from './components/not-following-authors/not-following-authors.component';
+import { CountMetricPipe } from './custom-pipe/count-metric.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -74,6 +75,7 @@ export function tokenGetter() {
     SubscriptionsComponent,
     FollowingAuthorsComponent,
     NotFollowingAuthorsComponent,
+    CountMetricPipe,
 // ToastrModule added
   ],
   imports: [

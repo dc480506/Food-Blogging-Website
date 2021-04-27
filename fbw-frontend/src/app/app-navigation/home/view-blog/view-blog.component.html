@@ -8,6 +8,8 @@
                         <div class="card-body text-font-family"> -->
                             <div class="middle-align">
                                 <h2 class="author-font">{{blog.author.name}}</h2>
+                                <!-- <app-follow [followersCount]="1000" [isFollowing]="follow.following" [authorId]="blog.author._id"></app-follow> -->
+
                                 <app-follow [followersCount]="follow.followersCount" [isFollowing]="follow.following" [authorId]="blog.author._id"></app-follow>
                                 <hr>
                                 <div class="row">
@@ -26,10 +28,10 @@
                                     [disLikesCount]="likeDislike.disLikesCount"
                                     (change)="onLikeDislikeClick($event)"
                                     ></app-like-dislike>
-                                    <div class="commentsPreview ml-3">
+                                    <!-- <div class="commentsPreview ml-3">
                                         <i class="bi bi-chat-fill"></i>  
                                         <span> {{blog.comments?.length}}</span>                          
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         <!-- </div>
