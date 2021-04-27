@@ -8,6 +8,7 @@ const user= require('./routers/user');
 const userBlog= require('./routers/userBlog');
 const blogs= require('./routers/blogs');
 const follow= require('./routers/follow');
+const subscribedAuthorBlogs= require('./routers/subscribed-author-blogs');
 const blogRSSFeed=require('./routers/blog-rss-feed');
 const cors= require('./middleware/cors');
 const bodyParser = require('body-parser');
@@ -60,6 +61,9 @@ app.use('/api/blogs',blogs);
 
 //For Follow
 app.use('/api/follow',follow);
+
+//For Subscribed blogs
+app.use('/api/subscribed-author-blogs',subscribedAuthorBlogs);
 
 
 // For Restaurants details

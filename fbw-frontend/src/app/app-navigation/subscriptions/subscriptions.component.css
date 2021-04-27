@@ -1,0 +1,10 @@
+.img-container{
+    display: inline-block;
+  position: relative;
+}
+
+.new{
+  position: absolute;
+  top: 0;
+  right: 0;
+}

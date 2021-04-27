@@ -38,6 +38,7 @@ import { LazyLoadDirective } from './custom-directives/lazy-load.directive';
 import { FollowComponent } from './components/follow/follow.component';
 import { PublishComponent } from './components/publish/publish.component';
 import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
+import { SubscriptionsComponent } from './app-navigation/subscriptions/subscriptions.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -67,6 +68,7 @@ export function tokenGetter() {
     FollowComponent,
     PublishComponent,
     LikeDislikeComponent,
+    SubscriptionsComponent,
 // ToastrModule added
   ],
   imports: [

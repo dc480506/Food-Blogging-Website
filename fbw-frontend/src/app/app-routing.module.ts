@@ -1,3 +1,4 @@
+import { SubscriptionsComponent } from './app-navigation/subscriptions/subscriptions.component';
 import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
 import { AuthGuard } from './services/guard/auth-guard/auth-guard.service';
@@ -81,6 +82,14 @@ const routes: Routes = [
       component: RestaurantComponent, 
       }
     ],
+  },
+  {
+    path:'my-subscriptions',
+    component:AppNavigationComponent,
+    children:[{
+      path:'',
+      component:SubscriptionsComponent
+    }]
   }
 ];
 
