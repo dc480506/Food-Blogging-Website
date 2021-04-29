@@ -66,6 +66,9 @@
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="data.length==0 && fetch" style="height:50vh;" class="jumbotron text-center text-danger">
+                        <p>Your have not subscribed to any Author! Please subscribe to get results</p>
+                    </div>
                     <div class="row pb-5">
                         <div class="col-md-12 p-5">
                         <ngx-spinner
@@ -79,6 +82,7 @@
                         </ngx-spinner>
                     </div>
                     </div>
+
             </div>
         </div>
     </div>

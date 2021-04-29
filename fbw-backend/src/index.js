@@ -10,6 +10,7 @@ const blogs= require('./routers/blogs');
 const follow= require('./routers/follow');
 const subscribedAuthorBlogs= require('./routers/subscribed-author-blogs');
 const blogRSSFeed=require('./routers/blog-rss-feed');
+const imageOperations=require('./routers/imageOperations');
 const cors= require('./middleware/cors');
 const bodyParser = require('body-parser');
 
@@ -75,6 +76,8 @@ app.use('/api/feeds',rssFeed);
 //For Blogs RSS feeds
 app.use('/feeds/rss',blogRSSFeed);
 
+//For images
+app.use('/api/images',imageOperations);
 app.get('/',function(req,res,next){
     console.log("Middleware called at route '/': ");
     console.log(req);

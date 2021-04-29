@@ -8,7 +8,7 @@ import { BadInputError } from '../errors/bad-input-error';
 
 export class DataService{
     private url="http://localhost:3000/api/";
-    baseImageURL="http://localhost:3000/blogImages/";
+    baseImageURL="http://localhost:3000/api/images/";
     constructor(path:String,private http:HttpClient){
         this.url+=path;
     }

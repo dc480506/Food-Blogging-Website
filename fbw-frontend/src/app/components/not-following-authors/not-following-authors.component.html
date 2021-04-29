@@ -14,6 +14,9 @@
                 <app-follow [followersCount]="author.followersCount" [isFollowing]="false" [authorId]="author._id"></app-follow>
                 <hr>
             </div>
+            <div *ngIf="data.length==0">
+                <p  style="font-size: 14px;">All Authors subscribed</p>
+            </div>
         </div>
     </div>
 </div>

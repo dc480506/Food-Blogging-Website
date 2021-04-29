@@ -2,13 +2,15 @@ const _= require('lodash');
 const express= require('express');
 const fs=require('fs')
 const mongoose= require('mongoose');
+const path=require('path')
 const Joi = require('joi');
 const router = express.Router();
 const {Blog,validateBlogData}= require('../models/blog.schema');
+const {Image}= require('../models/image.schema');
 const checkAuthorization =require('../middleware/auth');
 const storage = require('../helpers/storage');
 
-let path="./src/blogUploadImages/";
+let uploadPath="./src/blogUploadImages/";
 router.use(checkAuthorization);
 
 router.post('/',storage,async (req,res)=>{
@@ -25,8 +27,18 @@ router.post('/',storage,async (req,res)=>{
         blog.publishInfo.isPublish=true;
         blog.publishInfo.publishTime=Date.now();
     }
+    image= new Image({
+        name: req.file.filename,
+        desc: blog.title,
+        img:{
+            data: fs.readFileSync(path.join(__dirname,'../blogUploadImages/' + req.file.filename)),
+            contentType: req.file.mimetype
+        }
+    })
+    const imgObj=await image.save();
     blog.author=userID;
-    blog.image_url=req.file.filename;
+    // blog.image_url=req.file.filename;
+    blog.image_url=imgObj._id;
     await blog.save();
     //res.send(_.pick(user,['_id','name','email']));
     res.send(blog);
@@ -70,11 +82,21 @@ router.put('/:_id',storage,async (req,res)=>{
     if(!blog) return res.status(400).send("Blog doesn't exists");
 
     if(req.file){
-        fs.unlink(path+blog.image_url,(err)=>{
-            if (err) throw err;
-            console.log('File deleted!');
-        });
-        req.body.image_url=req.file.filename;
+        // fs.unlink(uploadPath+blog.image_url,(err)=>{
+        //     if (err) throw err;
+        //     console.log('File deleted!');
+        // });
+        // req.body.image_url=req.file.filename;
+        image= new Image({
+            name: req.file.filename,
+            desc: blog.title,
+            img:{
+                data: fs.readFileSync(path.join(__dirname,'../blogUploadImages/' + req.file.filename)),
+                contentType: req.file.mimetype
+            }
+        })
+        const imgObj=await image.save();
+        req.body.image_url=imgObj._id
     }
     console.log(req.body)
     const result=await Blog.findByIdAndUpdate(blogID,req.body,{new:true});
@@ -84,10 +106,11 @@ router.put('/:_id',storage,async (req,res)=>{
 router.delete('/:_id',async (req,res)=>{
     let blog= await Blog.findOne({_id:req.params._id});
     if(!blog) return res.status(404).send("Blog Not Found");
-    fs.unlink(path+blog.image_url,(err)=>{
-        if (err) throw err;
-        console.log('File deleted!');
-    });
+    // fs.unlink(uploadPath+blog.image_url,(err)=>{
+    //     if (err) throw err;
+    //     console.log('File deleted!');
+    // });
+    await Image.findByIdAndDelete(blog.image_url);
     const result=await Blog.findByIdAndDelete(req.params._id);
     res.send(result);
 })

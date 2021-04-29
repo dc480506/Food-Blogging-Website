@@ -48,12 +48,12 @@ router.post('/fetch-restaurants',(req,res,next)=>{
 router.post('/fetch-restaurants',(req,res)=>{
     let url;
     let nearby=true;
-    if(req.body.lon){
-        url=`${zomato_URL}/geocode?lon=${req.body.lon}&lat=${req.body.lat}`;
-    }else{
+    if(req.body.q){
         let start= req.body.start?req.body.start:9;
-        url=`${zomato_URL}/search?q=${req.body.q}&count=${req.body.count}&start=${start}`
+        url=`${zomato_URL}/search?q=${req.body.q}&count=${req.body.count}&start=${start}&lon=${req.body.lon}&lat=${req.body.lat}`
         nearby=false;
+    }else{
+        url=`${zomato_URL}/geocode?lon=${req.body.lon}&lat=${req.body.lat}`;
     }
     fetch(url,{
         mode: "cors",

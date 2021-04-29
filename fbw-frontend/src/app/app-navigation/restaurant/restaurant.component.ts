@@ -63,7 +63,9 @@ export class RestaurantComponent implements OnInit {
       data={
         q:this.search,
         count:this.count,
-        start:this.start
+        start:this.start,
+        lon:this.lon,
+        lat:this.lat,
       }
     }
     this.service.loadRestaurantData(data)

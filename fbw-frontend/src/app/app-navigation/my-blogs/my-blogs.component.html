@@ -99,6 +99,10 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="data.length==0 && fetch" style="height:50vh;" class="jumbotron text-center text-primary">
+            <p>Your have not created any blog. Create now?</p>
+            <button type="button" class="btn btn-success" (click)="createBlog()"><i class="bi bi-journal-richtext"></i> Create blog</button>
+        </div>
         <div class="row pb-5">
             <div class="col-md-12 p-5">
             <ngx-spinner

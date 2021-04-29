@@ -6,6 +6,7 @@ export class CustomScroll{
     notEmptyResult = true;
     page = 1;
     limit = 4;
+    fetch=false;
     constructor(private service:DataService, private spinner: NgxSpinnerService,page?:number,limit?:number){
         if(page && limit){
             this.page=page;
@@ -16,6 +17,7 @@ export class CustomScroll{
         this.service.get(this.page, this.limit).subscribe((res) => {
           this.data = res;
           console.log(res);
+          this.fetch=true
         });
         this.page += 1;
       }
