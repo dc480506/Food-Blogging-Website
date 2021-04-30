@@ -43,6 +43,7 @@ import { SubscriptionsComponent } from './app-navigation/subscriptions/subscript
 import { FollowingAuthorsComponent } from './components/following-authors/following-authors.component';
 import { NotFollowingAuthorsComponent } from './components/not-following-authors/not-following-authors.component';
 import { CountMetricPipe } from './custom-pipe/count-metric.pipe';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -76,6 +77,7 @@ export function tokenGetter() {
     FollowingAuthorsComponent,
     NotFollowingAuthorsComponent,
     CountMetricPipe,
+    NotFoundComponent,
 // ToastrModule added
   ],
   imports: [

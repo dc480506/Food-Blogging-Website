@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SubscriptionsComponent } from './app-navigation/subscriptions/subscriptions.component';
 import { CreateBlogComponent } from './app-navigation/my-blogs/create-blog/create-blog.component';
 import { RedirectHome } from './services/guard/redirect-home/redirect-home.service';
@@ -90,6 +91,10 @@ const routes: Routes = [
       path:'',
       component:SubscriptionsComponent
     }]
+  },
+  {
+    path:'**',
+    component:NotFoundComponent
   }
 ];
 
